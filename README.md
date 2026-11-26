@@ -2,15 +2,12 @@
 
 A personal project that plans a content slate the way a media-science data
 scientist would: forecast how titles perform, simulate what happens when
-the schedule slips, and keep a scorecard on every title. Built to fill the
-scenario-planning gap for the Netflix Data Scientist 5, Media Science role
-(JR42778, founding data scientist for Netflix Animation Studios).
+the schedule slips, and keep a scorecard on every title.
 
-**This is a personal project on public data.** It does not claim animation
-industry experience, slate-planning ownership, or any job experience. All
-numbers below are computed from the cited public sources by the code in
-this repo, and `verify_results.py` recomputes every headline number from
-the committed data.
+**This is a personal project on public data.** All numbers below are
+computed from the cited public sources by the code in this repo, and
+`verify_results.py` recomputes every headline number from the committed
+data.
 
 ## What it answers
 
@@ -193,8 +190,6 @@ no external libraries, so the report stays self-contained.
   did not match, and a few matches may be wrong titles with the same
   name (e.g. "The Crown" matched a 2024 Animation entry with no
   rating — it is not in the film slate, but matching noise exists).
-- This project does not claim animation-domain job experience,
-  slate-planning ownership, or Scala/Java.
 
 ## Repo layout
 

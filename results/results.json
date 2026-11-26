@@ -1,7 +1,7 @@
 {
   "project": "slate-scenario-planner",
   "generated": "2026-11-26",
-  "description": "Personal project: content-slate scenario planning on public Netflix Top 10 + IMDb data. Built for the Netflix Data Scientist 5, Media Science role (JR42778) to fill the scenario-planning gap.",
+  "description": "Personal project: content-slate scenario planning on public Netflix Top 10 + IMDb data.",
   "data": {
     "netflix_source": "https://www.netflix.com/tudum/top10/data/all-weeks-global.tsv",
     "netflix_sha256": "e63b35e4a5646d9f78c70706011c1f9d176420cfc0fde693d7450e0442b9b389",

@@ -77,9 +77,7 @@ def run() -> dict:
         "project": "slate-scenario-planner",
         "generated": str(date.today()),
         "description": ("Personal project: content-slate scenario planning "
-                        "on public Netflix Top 10 + IMDb data. Built for the "
-                        "Netflix Data Scientist 5, Media Science role "
-                        "(JR42778) to fill the scenario-planning gap."),
+                        "on public Netflix Top 10 + IMDb data."),
         "data": {
             "netflix_source": provenance["netflix_source"],
             "netflix_sha256": provenance["netflix_sha256"],
