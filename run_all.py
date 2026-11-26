@@ -168,8 +168,10 @@ def run() -> dict:
         chart_data={"slate": slate,
                     "slate_weekly_first": slate_weekly_first})
     REPORT_HTML.write_text(html_doc)
+    charts = report.export_chart_svgs(html_doc, ROOT / "results" / "charts")
     print(f"wrote {RESULTS_JSON}")
     print(f"wrote {REPORT_HTML}")
+    print(f"wrote {len(charts)} chart SVGs to results/charts/")
     print(f"slate titles: {len(slate_titles)}")
     print(f"forecast MAPE decay {results['forecast']['mape_decay_pct']:.2f}% "
           f"vs naive {results['forecast']['mape_naive_pct']:.2f}% "

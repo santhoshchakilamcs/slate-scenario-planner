@@ -1,0 +1,30 @@
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Slate total hours by scenario">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Slate total hours by scenario</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">0.0M</text>
+<line x1="60" y1="207.0" x2="744" y2="207.0" stroke="#e0e0e0"/>
+<text x="54" y="211.0" text-anchor="end" font-size="10" fill="#555">417.4M</text>
+<line x1="60" y1="146.0" x2="744" y2="146.0" stroke="#e0e0e0"/>
+<text x="54" y="150.0" text-anchor="end" font-size="10" fill="#555">834.9M</text>
+<line x1="60" y1="85.0" x2="744" y2="85.0" stroke="#e0e0e0"/>
+<text x="54" y="89.0" text-anchor="end" font-size="10" fill="#555">1,252.3M</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">1,669.8M</text>
+<text x="14" y="146" font-size="10" fill="#555" transform="rotate(-90 14 146)" text-anchor="middle">total hours</text>
+<text x="60.0" y="282" text-anchor="middle" font-size="10" fill="#555">baseline</text>
+<text x="288.0" y="282" text-anchor="middle" font-size="10" fill="#555">tentpole_slips_4w</text>
+<text x="516.0" y="282" text-anchor="middle" font-size="10" fill="#555">tentpoles_collide</text>
+<text x="744.0" y="282" text-anchor="middle" font-size="10" fill="#555">budget_shift_to_tentpole</text>
+<rect x="94.2" y="72.3" width="102.6" height="195.7" fill="#1f77b4"/>
+<text x="145.5" y="67.3" text-anchor="middle" font-size="11">1,339.3M</text>
+<text x="145.5" y="282" text-anchor="middle" font-size="10" fill="#555">baseline</text>
+<rect x="265.2" y="72.3" width="102.6" height="195.7" fill="#d62728"/>
+<text x="316.5" y="67.3" text-anchor="middle" font-size="11">1,339.3M</text>
+<text x="316.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpole_slips_4w</text>
+<rect x="436.2" y="72.4" width="102.6" height="195.6" fill="#2ca02c"/>
+<text x="487.5" y="67.4" text-anchor="middle" font-size="11">1,338.2M</text>
+<text x="487.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpoles_collide</text>
+<rect x="607.2" y="55.8" width="102.6" height="212.2" fill="#9467bd"/>
+<text x="658.5" y="50.8" text-anchor="middle" font-size="11">1,452.0M</text>
+<text x="658.5" y="282" text-anchor="middle" font-size="10" fill="#555">budget_shift_to_tentpole</text>
+</svg>

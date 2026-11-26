@@ -1,0 +1,23 @@
+<svg viewBox="0 0 760 340" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Slate composition — share of total hours by title (area = share)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Slate composition — share of total hours by title (area = share)</text>
+<rect x="8.0" y="30.0" width="744.0" height="254.5" fill="#1f77b4" stroke="#ffffff" stroke-width="1" data-tip="KPop Demon Hunters — 84.3% of slate (1,128.8M hours)"/>
+<text x="14.0" y="46.0" font-size="10" font-weight="bold" fill="#ffffff">KPop</text>
+<text x="14.0" y="60.0" font-size="10" fill="#ffffff">84.3%</text>
+<rect x="8.0" y="284.5" width="377.1" height="23.8" fill="#aec7e8" stroke="#ffffff" stroke-width="1" data-tip="Plankton: The Movie — 4.0% of slate (53.4M hours)"/>
+<text x="14.0" y="299.4" font-size="9" fill="#222222">Plankton 4.0%</text>
+<rect x="8.0" y="308.3" width="377.1" height="23.7" fill="#ff7f0e" stroke="#ffffff" stroke-width="1" data-tip="Despicable Me 4 — 4.0% of slate (53.3M hours)"/>
+<text x="14.0" y="323.1" font-size="9" fill="#222222">Despicable Me 4 4.0%</text>
+<rect x="385.1" y="284.5" width="220.4" height="22.7" fill="#ffbb78" stroke="#ffffff" stroke-width="1" data-tip="The Twits — 2.2% of slate (29.8M hours)"/>
+<text x="391.1" y="298.9" font-size="9" fill="#222222">The Twits 2.2%</text>
+<rect x="605.5" y="284.5" width="146.5" height="22.7" fill="#2ca02c" stroke="#ffffff" stroke-width="1" data-tip="The Wild Robot — 1.5% of slate (19.8M hours)"/>
+<text x="611.5" y="298.9" font-size="9" fill="#ffffff">Wild Robot 1.5%</text>
+<rect x="385.1" y="307.2" width="197.7" height="12.3" fill="#98df8a" stroke="#ffffff" stroke-width="1" data-tip="Mahavatar Narsimha — 1.1% of slate (14.5M hours)"/>
+<rect x="385.1" y="319.5" width="99.5" height="12.5" fill="#d62728" stroke="#ffffff" stroke-width="1" data-tip="The Bad Guys 2 — 0.6% of slate (7.4M hours)"/>
+<rect x="484.6" y="319.5" width="98.2" height="12.5" fill="#ff9896" stroke="#ffffff" stroke-width="1" data-tip="The Witcher: Sirens of the Deep — 0.5% of slate (7.3M hours)"/>
+<rect x="582.8" y="307.2" width="89.7" height="13.3" fill="#9467bd" stroke="#ffffff" stroke-width="1" data-tip="Cosmic Princess Kaguya! — 0.5% of slate (7.1M hours)"/>
+<rect x="672.4" y="307.2" width="79.6" height="13.3" fill="#c5b0d5" stroke="#ffffff" stroke-width="1" data-tip="Wallace &amp; Gromit: Vengeance Most Fowl — 0.5% of slate (6.3M hours)"/>
+<rect x="582.8" y="320.5" width="100.7" height="6.3" fill="#8c564b" stroke="#ffffff" stroke-width="1" data-tip="Emi Martínez: The Kid Who Stops Time — 0.3% of slate (3.8M hours)"/>
+<rect x="582.8" y="326.8" width="100.7" height="5.2" fill="#c49c94" stroke="#ffffff" stroke-width="1" data-tip="Dr. Seuss&#x27;s The Sneetches — 0.2% of slate (3.1M hours)"/>
+<rect x="683.4" y="320.5" width="68.6" height="6.1" fill="#e377c2" stroke="#ffffff" stroke-width="1" data-tip="The Rose of Versailles — 0.2% of slate (2.5M hours)"/>
+<rect x="683.4" y="326.6" width="68.6" height="5.4" fill="#f7b6d2" stroke="#ffffff" stroke-width="1" data-tip="My Hero Academia: You&#x27;re Next — 0.2% of slate (2.2M hours)"/>
+</svg>

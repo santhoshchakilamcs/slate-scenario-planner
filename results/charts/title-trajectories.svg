@@ -1,0 +1,59 @@
+<svg viewBox="0 0 764 436" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Weekly trajectory per title — first runs (each panel scaled to its own peak)">
+<text x="382" y="16" text-anchor="middle" font-size="13" font-weight="bold">Weekly trajectory per title — first runs (each panel scaled to its own peak)</text>
+<rect x="8" y="30" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="43" font-size="10" font-weight="bold">Wallace &amp; Gromit: Vengeance Most Fowl</text>
+<text x="368" y="43" text-anchor="end" font-size="9" fill="#555">peak 6.3M</text>
+<circle cx="14" cy="48" r="3" fill="#1f77b4"/>
+<rect x="382" y="30" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="43" font-size="10" font-weight="bold">The Witcher: Sirens of the Deep</text>
+<text x="742" y="43" text-anchor="end" font-size="9" fill="#555">peak 7.3M</text>
+<circle cx="388" cy="48" r="3" fill="#aec7e8"/>
+<rect x="8" y="88" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="101" font-size="10" font-weight="bold">Despicable Me 4</text>
+<text x="368" y="101" text-anchor="end" font-size="9" fill="#555">peak 15.9M</text>
+<polyline points="14.0,109.4 102.5,106.0 191.0,116.5 279.5,119.4 368.0,121.5" fill="none" stroke="#ff7f0e" stroke-width="1.5"/>
+<rect x="382" y="88" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="101" font-size="10" font-weight="bold">Plankton</text>
+<text x="742" y="101" text-anchor="end" font-size="9" fill="#555">peak 21.0M</text>
+<polyline points="388.0,106.0 506.0,107.7 624.0,122.1 742.0,126.1" fill="none" stroke="#ffbb78" stroke-width="1.5"/>
+<rect x="8" y="146" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="159" font-size="10" font-weight="bold">My Hero Academia: You&#x27;re Next</text>
+<text x="368" y="159" text-anchor="end" font-size="9" fill="#555">peak 2.2M</text>
+<circle cx="14" cy="164" r="3" fill="#2ca02c"/>
+<rect x="382" y="146" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="159" font-size="10" font-weight="bold">The Rose of Versailles</text>
+<text x="742" y="159" text-anchor="end" font-size="9" fill="#555">peak 2.5M</text>
+<circle cx="388" cy="164" r="3" fill="#98df8a"/>
+<rect x="8" y="204" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="217" font-size="10" font-weight="bold">Wild Robot</text>
+<text x="368" y="217" text-anchor="end" font-size="9" fill="#555">peak 9.9M</text>
+<polyline points="14.0,233.3 191.0,222.0 368.0,236.7" fill="none" stroke="#d62728" stroke-width="1.5"/>
+<rect x="382" y="204" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="217" font-size="10" font-weight="bold">KPop</text>
+<text x="742" y="217" text-anchor="end" font-size="9" fill="#555">peak 50.2M</text>
+<polyline points="388.0,240.0 393.7,227.1 399.4,228.4 405.1,227.1 410.8,225.7 416.5,225.3 422.3,225.3 428.0,225.7 433.7,225.6 439.4,226.0 445.1,222.0 450.8,226.0 456.5,228.5 462.2,229.7 467.9,231.3 473.6,232.4 479.4,232.6 485.1,234.0 490.8,235.4 496.5,235.9 502.2,237.3 507.9,238.0 513.6,239.2 519.3,239.0 525.0,240.5 530.7,241.1 536.5,241.2 542.2,240.2 547.9,239.9 553.6,241.5 559.3,241.7 565.0,241.9 570.7,242.1 576.4,242.8 582.1,243.1 587.8,242.8 593.5,243.6 599.3,243.9 605.0,243.4 610.7,243.3 616.4,243.8 622.1,243.6 627.8,243.9 633.5,244.2 639.2,244.4 644.9,244.6 650.6,244.9 656.4,244.7 662.1,244.7 667.8,244.7 673.5,244.8 679.2,244.9 684.9,244.9 690.6,244.7 696.3,245.0 702.0,245.0 707.7,245.0 713.5,244.8 719.2,244.9 724.9,245.2 730.6,245.2 736.3,245.3 742.0,245.5" fill="none" stroke="#ff9896" stroke-width="1.5"/>
+<rect x="8" y="262" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="275" font-size="10" font-weight="bold">Mahavatar Narsimha</text>
+<text x="368" y="275" text-anchor="end" font-size="9" fill="#555">peak 6.6M</text>
+<polyline points="14.0,286.3 191.0,280.0 368.0,294.6" fill="none" stroke="#9467bd" stroke-width="1.5"/>
+<rect x="382" y="262" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="275" font-size="10" font-weight="bold">The Twits</text>
+<text x="742" y="275" text-anchor="end" font-size="9" fill="#555">peak 13.9M</text>
+<polyline points="388.0,286.9 565.0,280.0 742.0,295.3" fill="none" stroke="#c5b0d5" stroke-width="1.5"/>
+<rect x="8" y="320" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="333" font-size="10" font-weight="bold">Dr. Seuss&#x27;s The Sneetches</text>
+<text x="368" y="333" text-anchor="end" font-size="9" fill="#555">peak 3.1M</text>
+<circle cx="14" cy="338" r="3" fill="#8c564b"/>
+<rect x="382" y="320" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="333" font-size="10" font-weight="bold">Cosmic Princess Kaguya!</text>
+<text x="742" y="333" text-anchor="end" font-size="9" fill="#555">peak 2.9M</text>
+<polyline points="388.0,343.4 565.0,338.0 742.0,347.0" fill="none" stroke="#c49c94" stroke-width="1.5"/>
+<rect x="8" y="378" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="391" font-size="10" font-weight="bold">The Bad Guys 2</text>
+<text x="368" y="391" text-anchor="end" font-size="9" fill="#555">peak 7.4M</text>
+<circle cx="14" cy="396" r="3" fill="#e377c2"/>
+<rect x="382" y="378" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="391" font-size="10" font-weight="bold">Emi Martínez: The Kid Who Stops Time</text>
+<text x="742" y="391" text-anchor="end" font-size="9" fill="#555">peak 2.4M</text>
+<polyline points="388.0,396.0 742.0,406.8" fill="none" stroke="#f7b6d2" stroke-width="1.5"/>
+</svg>

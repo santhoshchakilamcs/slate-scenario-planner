@@ -1,0 +1,146 @@
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top 10 rank by week — slate titles (rank 1 at top; hover a point)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Top 10 rank by week — slate titles (rank 1 at top; hover a point)</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">1</text>
+<line x1="60" y1="51.1" x2="744" y2="51.1" stroke="#e0e0e0"/>
+<text x="54" y="55.1" text-anchor="end" font-size="10" fill="#555">2</text>
+<line x1="60" y1="78.2" x2="744" y2="78.2" stroke="#e0e0e0"/>
+<text x="54" y="82.2" text-anchor="end" font-size="10" fill="#555">3</text>
+<line x1="60" y1="105.3" x2="744" y2="105.3" stroke="#e0e0e0"/>
+<text x="54" y="109.3" text-anchor="end" font-size="10" fill="#555">4</text>
+<line x1="60" y1="132.4" x2="744" y2="132.4" stroke="#e0e0e0"/>
+<text x="54" y="136.4" text-anchor="end" font-size="10" fill="#555">5</text>
+<line x1="60" y1="159.6" x2="744" y2="159.6" stroke="#e0e0e0"/>
+<text x="54" y="163.6" text-anchor="end" font-size="10" fill="#555">6</text>
+<line x1="60" y1="186.7" x2="744" y2="186.7" stroke="#e0e0e0"/>
+<text x="54" y="190.7" text-anchor="end" font-size="10" fill="#555">7</text>
+<line x1="60" y1="213.8" x2="744" y2="213.8" stroke="#e0e0e0"/>
+<text x="54" y="217.8" text-anchor="end" font-size="10" fill="#555">8</text>
+<line x1="60" y1="240.9" x2="744" y2="240.9" stroke="#e0e0e0"/>
+<text x="54" y="244.9" text-anchor="end" font-size="10" fill="#555">9</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">10</text>
+<text x="14" y="146" font-size="10" fill="#555" transform="rotate(-90 14 146)" text-anchor="middle">Top 10 rank</text>
+<text x="60.0" y="282" text-anchor="middle" font-size="10" fill="#555">2025-01-12</text>
+<text x="156.6" y="282" text-anchor="middle" font-size="10" fill="#555">2025-04-06</text>
+<text x="253.1" y="282" text-anchor="middle" font-size="10" fill="#555">2025-06-29</text>
+<text x="349.7" y="282" text-anchor="middle" font-size="10" fill="#555">2025-09-21</text>
+<text x="446.3" y="282" text-anchor="middle" font-size="10" fill="#555">2025-12-14</text>
+<text x="542.8" y="282" text-anchor="middle" font-size="10" fill="#555">2026-03-08</text>
+<text x="639.4" y="282" text-anchor="middle" font-size="10" fill="#555">2026-05-31</text>
+<text x="736.0" y="282" text-anchor="middle" font-size="10" fill="#555">2026-08-23</text>
+<circle cx="60.0" cy="159.6" r="4" fill="#1f77b4" data-tip="Wallace &amp; Gromit: Vengeance Most Fowl: 2025-01-12 — rank 6, 6.3M hours"/>
+<text x="66.0" y="162.6" font-size="9" fill="#1f77b4">Wallace &amp; Gromit: Vengeance Most Fowl</text>
+<circle cx="100.2" cy="186.7" r="4" fill="#aec7e8" data-tip="The Witcher: Sirens of the Deep: 2025-02-16 — rank 7, 7.3M hours"/>
+<text x="106.2" y="189.7" font-size="9" fill="#aec7e8">The Witcher: Sirens of the Deep</text>
+<polyline points="116.3,51.1 124.4,51.1 132.4,132.4 140.5,186.7 148.5,213.8" fill="none" stroke="#ff7f0e" stroke-width="2"/>
+<circle cx="116.3" cy="51.1" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-02 — rank 2, 13.8M hours"/>
+<circle cx="124.4" cy="51.1" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-09 — rank 2, 15.9M hours"/>
+<circle cx="132.4" cy="132.4" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-16 — rank 5, 9.5M hours"/>
+<circle cx="140.5" cy="186.7" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-23 — rank 7, 7.7M hours"/>
+<circle cx="148.5" cy="213.8" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-30 — rank 8, 6.4M hours"/>
+<text x="154.5" y="216.8" font-size="9" fill="#ff7f0e">Despicable Me 4</text>
+<polyline points="124.4,24.0 132.4,51.1 140.5,159.6 148.5,268.0" fill="none" stroke="#ffbb78" stroke-width="2"/>
+<circle cx="124.4" cy="24.0" r="3" fill="#ffbb78" data-tip="Plankton: The Movie: 2025-03-09 — rank 1, 21.0M hours"/>
+<circle cx="132.4" cy="51.1" r="3" fill="#ffbb78" data-tip="Plankton: The Movie: 2025-03-16 — rank 2, 19.6M hours"/>
+<circle cx="140.5" cy="159.6" r="3" fill="#ffbb78" data-tip="Plankton: The Movie: 2025-03-23 — rank 6, 8.0M hours"/>
+<circle cx="148.5" cy="268.0" r="3" fill="#ffbb78" data-tip="Plankton: The Movie: 2025-03-30 — rank 10, 4.8M hours"/>
+<text x="154.5" y="271.0" font-size="9" fill="#ffbb78">Plankton</text>
+<circle cx="180.7" cy="268.0" r="4" fill="#2ca02c" data-tip="My Hero Academia: You&#x27;re Next: 2025-04-27 — rank 10, 2.2M hours"/>
+<text x="186.7" y="271.0" font-size="9" fill="#2ca02c">My Hero Academia: You&#x27;re Next</text>
+<circle cx="188.8" cy="213.8" r="4" fill="#98df8a" data-tip="The Rose of Versailles: 2025-05-04 — rank 8, 2.5M hours"/>
+<text x="194.8" y="216.8" font-size="9" fill="#98df8a">The Rose of Versailles</text>
+<polyline points="212.9,268.0 220.9,51.1 229.0,268.0" fill="none" stroke="#d62728" stroke-width="2"/>
+<circle cx="212.9" cy="268.0" r="3" fill="#d62728" data-tip="The Wild Robot: 2025-05-25 — rank 10, 5.6M hours"/>
+<circle cx="220.9" cy="51.1" r="3" fill="#d62728" data-tip="The Wild Robot: 2025-06-01 — rank 2, 9.9M hours"/>
+<circle cx="229.0" cy="268.0" r="3" fill="#d62728" data-tip="The Wild Robot: 2025-06-08 — rank 10, 4.3M hours"/>
+<text x="235.0" y="271.0" font-size="9" fill="#d62728">Wild Robot</text>
+<polyline points="245.1,51.1 253.1,24.0 261.2,51.1 269.2,24.0 277.3,24.0 285.3,51.1 293.4,51.1 301.4,51.1 309.5,24.0 317.5,24.0 325.6,24.0 333.6,51.1 341.6,24.0 349.7,51.1 357.7,24.0 365.8,24.0 373.8,51.1 381.9,78.2 389.9,78.2 398.0,51.1 406.0,51.1 414.1,78.2 422.1,132.4 430.2,78.2 438.2,78.2 446.3,105.3 454.3,78.2 462.4,78.2 470.4,51.1 478.4,105.3 486.5,105.3 494.5,132.4 502.6,78.2 510.6,78.2 518.7,105.3 526.7,78.2 534.8,51.1 542.8,78.2 550.9,105.3 558.9,105.3 567.0,105.3 575.0,186.7 583.1,159.6 591.1,132.4 599.2,159.6 607.2,132.4 615.2,132.4 623.3,159.6 631.3,268.0 639.4,240.9 647.4,268.0 655.5,159.6 663.5,159.6 671.6,159.6 679.6,159.6 687.7,268.0 695.7,159.6 703.8,186.7 711.8,132.4 719.9,159.6 727.9,240.9 736.0,159.6 744.0,213.8" fill="none" stroke="#ff9896" stroke-width="2"/>
+<circle cx="245.1" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-06-22 — rank 2, 15.4M hours"/>
+<circle cx="253.1" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-06-29 — rank 1, 40.3M hours"/>
+<circle cx="261.2" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-07-06 — rank 2, 37.8M hours"/>
+<circle cx="269.2" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-07-13 — rank 1, 40.4M hours"/>
+<circle cx="277.3" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-07-20 — rank 1, 43.0M hours"/>
+<circle cx="285.3" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-07-27 — rank 2, 43.9M hours"/>
+<circle cx="293.4" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-03 — rank 2, 43.8M hours"/>
+<circle cx="301.4" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-10 — rank 2, 43.1M hours"/>
+<circle cx="309.5" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-17 — rank 1, 43.3M hours"/>
+<circle cx="317.5" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-24 — rank 1, 42.4M hours"/>
+<circle cx="325.6" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-31 — rank 1, 50.2M hours"/>
+<circle cx="333.6" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-09-07 — rank 2, 42.4M hours"/>
+<circle cx="341.6" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-09-14 — rank 1, 37.7M hours"/>
+<circle cx="349.7" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-09-21 — rank 2, 35.4M hours"/>
+<circle cx="357.7" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-09-28 — rank 1, 32.2M hours"/>
+<circle cx="365.8" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-10-05 — rank 1, 30.2M hours"/>
+<circle cx="373.8" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-10-12 — rank 2, 29.7M hours"/>
+<circle cx="381.9" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-10-19 — rank 3, 27.0M hours"/>
+<circle cx="389.9" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-10-26 — rank 3, 24.4M hours"/>
+<circle cx="398.0" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-02 — rank 2, 23.3M hours"/>
+<circle cx="406.0" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-09 — rank 2, 20.7M hours"/>
+<circle cx="414.1" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-16 — rank 3, 19.3M hours"/>
+<circle cx="422.1" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-23 — rank 5, 16.9M hours"/>
+<circle cx="430.2" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-30 — rank 3, 17.3M hours"/>
+<circle cx="438.2" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-12-07 — rank 3, 14.4M hours"/>
+<circle cx="446.3" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-12-14 — rank 4, 13.4M hours"/>
+<circle cx="454.3" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-12-21 — rank 3, 13.1M hours"/>
+<circle cx="462.4" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-12-28 — rank 3, 15.1M hours"/>
+<circle cx="470.4" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-01-04 — rank 2, 15.7M hours"/>
+<circle cx="478.4" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-01-11 — rank 4, 12.6M hours"/>
+<circle cx="486.5" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-01-18 — rank 4, 12.1M hours"/>
+<circle cx="494.5" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-01-25 — rank 5, 11.7M hours"/>
+<circle cx="502.6" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-02-01 — rank 3, 11.4M hours"/>
+<circle cx="510.6" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-02-08 — rank 3, 10.1M hours"/>
+<circle cx="518.7" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-02-15 — rank 4, 9.5M hours"/>
+<circle cx="526.7" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-02-22 — rank 3, 10.0M hours"/>
+<circle cx="534.8" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-01 — rank 2, 8.4M hours"/>
+<circle cx="542.8" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-08 — rank 3, 7.9M hours"/>
+<circle cx="550.9" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-15 — rank 4, 8.8M hours"/>
+<circle cx="558.9" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-22 — rank 4, 9.0M hours"/>
+<circle cx="567.0" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-29 — rank 4, 8.2M hours"/>
+<circle cx="575.0" cy="186.7" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-04-05 — rank 7, 8.5M hours"/>
+<circle cx="583.1" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-04-12 — rank 6, 8.0M hours"/>
+<circle cx="591.1" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-04-19 — rank 5, 7.4M hours"/>
+<circle cx="599.2" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-04-26 — rank 6, 7.0M hours"/>
+<circle cx="607.2" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-03 — rank 5, 6.5M hours"/>
+<circle cx="615.2" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-10 — rank 5, 6.0M hours"/>
+<circle cx="623.3" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-17 — rank 6, 6.4M hours"/>
+<circle cx="631.3" cy="268.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-24 — rank 10, 6.4M hours"/>
+<circle cx="639.4" cy="240.9" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-31 — rank 9, 6.3M hours"/>
+<circle cx="647.4" cy="268.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-06-07 — rank 10, 6.2M hours"/>
+<circle cx="655.5" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-06-14 — rank 6, 6.0M hours"/>
+<circle cx="663.5" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-06-21 — rank 6, 6.0M hours"/>
+<circle cx="671.6" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-06-28 — rank 6, 6.3M hours"/>
+<circle cx="679.6" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-07-05 — rank 6, 5.8M hours"/>
+<circle cx="687.7" cy="268.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-07-12 — rank 10, 5.8M hours"/>
+<circle cx="695.7" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-07-19 — rank 6, 5.7M hours"/>
+<circle cx="703.8" cy="186.7" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-07-26 — rank 7, 6.1M hours"/>
+<circle cx="711.8" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-02 — rank 5, 5.9M hours"/>
+<circle cx="719.9" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-09 — rank 6, 5.5M hours"/>
+<circle cx="727.9" cy="240.9" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-16 — rank 9, 5.5M hours"/>
+<circle cx="736.0" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-23 — rank 6, 5.2M hours"/>
+<circle cx="744.0" cy="213.8" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-30 — rank 8, 4.8M hours"/>
+<text x="738.0" y="216.8" text-anchor="end" font-size="9" fill="#ff9896">KPop</text>
+<polyline points="349.7,132.4 357.7,105.3 365.8,186.7" fill="none" stroke="#9467bd" stroke-width="2"/>
+<circle cx="349.7" cy="132.4" r="3" fill="#9467bd" data-tip="Mahavatar Narsimha: 2025-09-21 — rank 5, 5.0M hours"/>
+<circle cx="357.7" cy="105.3" r="3" fill="#9467bd" data-tip="Mahavatar Narsimha: 2025-09-28 — rank 4, 6.6M hours"/>
+<circle cx="365.8" cy="186.7" r="3" fill="#9467bd" data-tip="Mahavatar Narsimha: 2025-10-05 — rank 7, 2.9M hours"/>
+<text x="371.8" y="189.7" font-size="9" fill="#9467bd">Mahavatar Narsimha</text>
+<polyline points="381.9,132.4 389.9,132.4 398.0,213.8" fill="none" stroke="#c5b0d5" stroke-width="2"/>
+<circle cx="381.9" cy="132.4" r="3" fill="#c5b0d5" data-tip="The Twits: 2025-10-19 — rank 5, 10.2M hours"/>
+<circle cx="389.9" cy="132.4" r="3" fill="#c5b0d5" data-tip="The Twits: 2025-10-26 — rank 5, 13.9M hours"/>
+<circle cx="398.0" cy="213.8" r="3" fill="#c5b0d5" data-tip="The Twits: 2025-11-02 — rank 8, 5.7M hours"/>
+<text x="404.0" y="216.8" font-size="9" fill="#c5b0d5">The Twits</text>
+<circle cx="406.0" cy="268.0" r="4" fill="#8c564b" data-tip="Dr. Seuss&#x27;s The Sneetches: 2025-11-09 — rank 10, 3.1M hours"/>
+<text x="412.0" y="271.0" font-size="9" fill="#8c564b">Dr. Seuss&#x27;s The Sneetches</text>
+<polyline points="494.5,186.7 502.6,213.8 510.6,268.0" fill="none" stroke="#c49c94" stroke-width="2"/>
+<circle cx="494.5" cy="186.7" r="3" fill="#c49c94" data-tip="Cosmic Princess Kaguya!: 2026-01-25 — rank 7, 2.3M hours"/>
+<circle cx="502.6" cy="213.8" r="3" fill="#c49c94" data-tip="Cosmic Princess Kaguya!: 2026-02-01 — rank 8, 2.9M hours"/>
+<circle cx="510.6" cy="268.0" r="3" fill="#c49c94" data-tip="Cosmic Princess Kaguya!: 2026-02-08 — rank 10, 1.9M hours"/>
+<text x="516.6" y="271.0" font-size="9" fill="#c49c94">Cosmic Princess Kaguya!</text>
+<circle cx="567.0" cy="132.4" r="4" fill="#e377c2" data-tip="The Bad Guys 2: 2026-03-29 — rank 5, 7.4M hours"/>
+<text x="573.0" y="135.4" font-size="9" fill="#e377c2">The Bad Guys 2</text>
+<polyline points="639.4,51.1 647.4,186.7" fill="none" stroke="#f7b6d2" stroke-width="2"/>
+<circle cx="639.4" cy="51.1" r="3" fill="#f7b6d2" data-tip="Emi Martínez: The Kid Who Stops Time: 2026-05-31 — rank 2, 2.4M hours"/>
+<circle cx="647.4" cy="186.7" r="3" fill="#f7b6d2" data-tip="Emi Martínez: The Kid Who Stops Time: 2026-06-07 — rank 7, 1.4M hours"/>
+<text x="653.4" y="189.7" font-size="9" fill="#f7b6d2">Emi Martínez: The Kid Who Stops Time</text>
+</svg>

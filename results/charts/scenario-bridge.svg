@@ -1,0 +1,28 @@
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bridge: how each scenario moves slate total hours vs baseline (floating bars are alternatives, not cumulative steps)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Bridge: how each scenario moves slate total hours vs baseline (floating bars are alternatives, not cumulative steps)</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">1.32B</text>
+<line x1="60" y1="207.0" x2="744" y2="207.0" stroke="#e0e0e0"/>
+<text x="54" y="211.0" text-anchor="end" font-size="10" fill="#555">1.36B</text>
+<line x1="60" y1="146.0" x2="744" y2="146.0" stroke="#e0e0e0"/>
+<text x="54" y="150.0" text-anchor="end" font-size="10" fill="#555">1.40B</text>
+<line x1="60" y1="85.0" x2="744" y2="85.0" stroke="#e0e0e0"/>
+<text x="54" y="89.0" text-anchor="end" font-size="10" fill="#555">1.43B</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">1.47B</text>
+<rect x="98.5" y="242.6" width="94.1" height="25.4" fill="#1f77b4"/>
+<text x="145.5" y="237.6" text-anchor="middle" font-size="11">1.34B</text>
+<text x="145.5" y="282" text-anchor="middle" font-size="10" fill="#555">Baseline</text>
+<line x1="269.5" y1="242.6" x2="363.5" y2="242.6" stroke="#999" stroke-width="3"/>
+<text x="316.5" y="237.6" text-anchor="middle" font-size="11">+0.0M</text>
+<text x="316.5" y="296" text-anchor="middle" font-size="9" fill="#555">total 1.34B</text>
+<text x="316.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpole slips 4w</text>
+<rect x="440.5" y="242.6" width="94.1" height="1.8" fill="#d62728"/>
+<text x="487.5" y="258.4" text-anchor="middle" font-size="11">-1.1M</text>
+<text x="487.5" y="296" text-anchor="middle" font-size="9" fill="#555">total 1.34B</text>
+<text x="487.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpoles collide</text>
+<rect x="611.5" y="47.6" width="94.1" height="195.0" fill="#2ca02c"/>
+<text x="658.5" y="42.6" text-anchor="middle" font-size="11">+112.7M</text>
+<text x="658.5" y="296" text-anchor="middle" font-size="9" fill="#555">total 1.45B</text>
+<text x="658.5" y="282" text-anchor="middle" font-size="10" fill="#555">budget shift to tentpole</text>
+</svg>

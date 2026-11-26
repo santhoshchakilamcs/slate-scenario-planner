@@ -24,6 +24,8 @@ from __future__ import annotations
 
 import html
 import math
+import re
+from pathlib import Path
 
 import pandas as pd
 
@@ -762,3 +764,35 @@ not measured causal effects. Forecasts are illustrative, not production
 predictions.</i></p>
 {TOOLTIP_JS}</body></html>"""
     return html_doc
+
+
+# Standalone SVG filenames for the report charts, matched by chart title.
+CHART_FILES = [
+    ("Forecast vs actual", "forecast-vs-actual.svg"),
+    ("Top 10 rank by week", "rank-movement.svg"),
+    ("Weekly trajectory per title", "title-trajectories.svg"),
+    ("Weekly hours viewed by title and week", "hours-heatmap.svg"),
+    ("Slate total hours by scenario", "scenario-totals.svg"),
+    ("Peak-week load by scenario", "peak-week-load.svg"),
+    ("Bridge: how each scenario moves", "scenario-bridge.svg"),
+    ("First-run shape", "first-run-shapes.svg"),
+    ("Slate composition", "slate-composition.svg"),
+]
+
+
+def export_chart_svgs(html_doc: str, out_dir: Path) -> list[str]:
+    """Write each inline SVG in the report to its own standalone file.
+
+    The SVGs already carry xmlns + viewBox, so the files render on their
+    own (e.g. embedded in the README). Returns the written filenames.
+    """
+    svgs = re.findall(r"<svg.*?</svg>", html_doc, re.S)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    written = []
+    for title, fname in CHART_FILES:
+        for svg in svgs:
+            if title in svg:
+                (out_dir / fname).write_text(svg, encoding="utf-8")
+                written.append(fname)
+                break
+    return written

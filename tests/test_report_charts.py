@@ -179,3 +179,17 @@ def test_shape_chart_individual_curves_behind_median():
     assert "individual titles (2)" in svg
     assert "median shape" in svg
     assert "Alpha" in svg
+
+
+def test_export_chart_svgs_writes_nine_standalone_files(tmp_path):
+    results, weekly, shape_series, sc, slate, slate_weekly, meta = _fixture()
+    html_doc = report.build_report(
+        results, weekly, shape_series, sc, meta,
+        chart_data={"slate": slate, "slate_weekly_first": slate_weekly})
+    written = report.export_chart_svgs(html_doc, tmp_path / "charts")
+    assert len(written) == 9
+    for fname in written:
+        text = (tmp_path / "charts" / fname).read_text()
+        assert text.startswith("<svg")
+        assert 'xmlns="http://www.w3.org/2000/svg"' in text
+        assert "</svg>" in text
