@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Slate Scenario Planner — report</title>
+<style>body{font-family:Arial,sans-serif;max-width:900px;margin:auto;padding:20px}
+table{border-collapse:collapse;font-size:13px}th{background:#eee}
+#tooltip{position:fixed;display:none;background:rgba(20,20,20,.9);color:#fff;
+padding:5px 8px;border-radius:4px;font-size:12px;pointer-events:none;
+z-index:99;max-width:320px}</style>
+</head><body>
+<div id="tooltip"></div>
+<h1>Content-Slate Scenario Planner</h1>
+<p>Personal project on public data. Slate: 14 new
+animated films, first Top 10 runs starting 2025-01-12 to
+2026-08-30. Data: Netflix Top 10 global weekly data
+(official, top10.netflix.com) + IMDb public datasets. See README for sources,
+definitions, and limitations. Charts are interactive where noted: hover
+points for values.</p>
+<h2>Forecast check (one-step-ahead, 22 titles, first runs &ge; 4 weeks)</h2>
+<p>Decay-curve model MAPE: <b>16.8%</b>; naive (repeat last
+week) MAPE: <b>50.6%</b>; median-shape model MAPE:
+<b>32.9%</b>. Decay fell back to naive on
+0 of 22 titles (too few post-peak points
+to fit). Pooled post-peak retention ratio: 0.849.</p>
+<h2>Forecast vs actual</h2>
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forecast vs actual — one-step-ahead last-week hours (each title&#x27;s naive / shape / decay predictions connected; hover a point)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Forecast vs actual — one-step-ahead last-week hours (each title&#x27;s naive / shape / decay predictions connected; hover a point)</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">0.0M</text>
+<line x1="60.0" y1="24" x2="60.0" y2="268" stroke="#e0e0e0"/>
+<text x="60.0" y="282" text-anchor="middle" font-size="10" fill="#555">0.0M</text>
+<line x1="60" y1="207.0" x2="744" y2="207.0" stroke="#e0e0e0"/>
+<text x="54" y="211.0" text-anchor="end" font-size="10" fill="#555">5.3M</text>
+<line x1="231.0" y1="24" x2="231.0" y2="268" stroke="#e0e0e0"/>
+<text x="231.0" y="282" text-anchor="middle" font-size="10" fill="#555">5.3M</text>
+<line x1="60" y1="146.0" x2="744" y2="146.0" stroke="#e0e0e0"/>
+<text x="54" y="150.0" text-anchor="end" font-size="10" fill="#555">10.6M</text>
+<line x1="402.0" y1="24" x2="402.0" y2="268" stroke="#e0e0e0"/>
+<text x="402.0" y="282" text-anchor="middle" font-size="10" fill="#555">10.6M</text>
+<line x1="60" y1="85.0" x2="744" y2="85.0" stroke="#e0e0e0"/>
+<text x="54" y="89.0" text-anchor="end" font-size="10" fill="#555">15.9M</text>
+<line x1="573.0" y1="24" x2="573.0" y2="268" stroke="#e0e0e0"/>
+<text x="573.0" y="282" text-anchor="middle" font-size="10" fill="#555">15.9M</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">21.3M</text>
+<line x1="744.0" y1="24" x2="744.0" y2="268" stroke="#e0e0e0"/>
+<text x="744.0" y="282" text-anchor="middle" font-size="10" fill="#555">21.3M</text>
+<text x="14" y="146" font-size="10" fill="#555" transform="rotate(-90 14 146)" text-anchor="middle">predicted hours</text>
+<text x="402" y="298" text-anchor="middle" font-size="10" fill="#555">actual last-week hours</text>
+<line x1="60.0" y1="268.0" x2="744.0" y2="24.0" stroke="#999" stroke-dasharray="5,4"/>
+<polyline points="263.4,168.0 263.4,180.2 263.4,199.9" fill="none" stroke="#1f77b4" stroke-width="1" opacity="0.6"/>
+<rect x="259.4" y="164.0" width="8" height="8" fill="#1f77b4" data-tip="Back to the Outback — week 2022-01-23 — naive: actual 6.3M, predicted 8.7M"/>
+<polygon points="263.4,175.2 258.4,184.2 268.4,184.2" fill="#1f77b4" data-tip="Back to the Outback — week 2022-01-23 — shape: actual 6.3M, predicted 7.6M"/>
+<circle cx="263.4" cy="199.9" r="4" fill="#1f77b4" data-tip="Back to the Outback — week 2022-01-23 — decay: actual 6.3M, predicted 5.9M"/>
+<polyline points="317.5,107.3 317.5,128.4 317.5,179.4" fill="none" stroke="#aec7e8" stroke-width="1" opacity="0.6"/>
+<rect x="313.5" y="103.3" width="8" height="8" fill="#aec7e8" data-tip="Chicken Run: Dawn of the Nugget — week 2024-01-07 — naive: actual 8.0M, predicted 14.0M"/>
+<polygon points="317.5,123.4 312.5,132.4 322.5,132.4" fill="#aec7e8" data-tip="Chicken Run: Dawn of the Nugget — week 2024-01-07 — shape: actual 8.0M, predicted 12.2M"/>
+<circle cx="317.5" cy="179.4" r="4" fill="#aec7e8" data-tip="Chicken Run: Dawn of the Nugget — week 2024-01-07 — decay: actual 8.0M, predicted 7.7M"/>
+<polyline points="252.4,142.2 252.4,158.7 252.4,209.9" fill="none" stroke="#ff7f0e" stroke-width="1" opacity="0.6"/>
+<rect x="248.4" y="138.2" width="8" height="8" fill="#ff7f0e" data-tip="Chickenhare and the Hamster of Darkness — week 2022-07-03 — naive: actual 6.0M, predicted 11.0M"/>
+<polygon points="252.4,153.7 247.4,162.7 257.4,162.7" fill="#ff7f0e" data-tip="Chickenhare and the Hamster of Darkness — week 2022-07-03 — shape: actual 6.0M, predicted 9.5M"/>
+<circle cx="252.4" cy="209.9" r="4" fill="#ff7f0e" data-tip="Chickenhare and the Hamster of Darkness — week 2022-07-03 — decay: actual 6.0M, predicted 5.1M"/>
+<polyline points="239.9,185.7 239.9,196.5 239.9,202.1" fill="none" stroke="#ffbb78" stroke-width="1" opacity="0.6"/>
+<rect x="235.9" y="181.7" width="8" height="8" fill="#ffbb78" data-tip="Despicable Me — week 2022-02-27 — naive: actual 5.6M, predicted 7.2M"/>
+<polygon points="239.9,191.5 234.9,200.5 244.9,200.5" fill="#ffbb78" data-tip="Despicable Me — week 2022-02-27 — shape: actual 5.6M, predicted 6.2M"/>
+<circle cx="239.9" cy="202.1" r="4" fill="#ffbb78" data-tip="Despicable Me — week 2022-02-27 — decay: actual 5.6M, predicted 5.7M"/>
+<polyline points="244.1,188.9 244.1,200.1 244.1,195.1" fill="none" stroke="#2ca02c" stroke-width="1" opacity="0.6"/>
+<rect x="240.1" y="184.9" width="8" height="8" fill="#2ca02c" data-tip="Despicable Me 2 — week 2022-03-13 — naive: actual 5.7M, predicted 6.9M"/>
+<polygon points="244.1,195.1 239.1,204.1 249.1,204.1" fill="#2ca02c" data-tip="Despicable Me 2 — week 2022-03-13 — shape: actual 5.7M, predicted 5.9M"/>
+<circle cx="244.1" cy="195.1" r="4" fill="#2ca02c" data-tip="Despicable Me 2 — week 2022-03-13 — decay: actual 5.7M, predicted 6.4M"/>
+<polyline points="214.5,186.5 214.5,196.6 214.5,215.0" fill="none" stroke="#98df8a" stroke-width="1" opacity="0.6"/>
+<rect x="210.5" y="182.5" width="8" height="8" fill="#98df8a" data-tip="Despicable Me 3 — week 2024-03-10 — naive: actual 4.8M, predicted 7.1M"/>
+<polygon points="214.5,191.6 209.5,200.6 219.5,200.6" fill="#98df8a" data-tip="Despicable Me 3 — week 2024-03-10 — shape: actual 4.8M, predicted 6.2M"/>
+<circle cx="214.5" cy="215.0" r="4" fill="#98df8a" data-tip="Despicable Me 3 — week 2024-03-10 — decay: actual 4.8M, predicted 4.6M"/>
+<polyline points="266.0,179.6 266.0,190.9 266.0,209.5" fill="none" stroke="#d62728" stroke-width="1" opacity="0.6"/>
+<rect x="262.0" y="175.6" width="8" height="8" fill="#d62728" data-tip="Despicable Me 4 — week 2025-03-30 — naive: actual 6.4M, predicted 7.7M"/>
+<polygon points="266.0,185.9 261.0,194.9 271.0,194.9" fill="#d62728" data-tip="Despicable Me 4 — week 2025-03-30 — shape: actual 6.4M, predicted 6.7M"/>
+<circle cx="266.0" cy="209.5" r="4" fill="#d62728" data-tip="Despicable Me 4 — week 2025-03-30 — decay: actual 6.4M, predicted 5.1M"/>
+<polyline points="411.1,42.1 411.1,71.8 411.1,155.1" fill="none" stroke="#ff9896" stroke-width="1" opacity="0.6"/>
+<rect x="407.1" y="38.1" width="8" height="8" fill="#ff9896" data-tip="Guillermo del Toro’s Pinocchio — week 2023-01-01 — naive: actual 10.9M, predicted 19.7M"/>
+<polygon points="411.1,66.8 406.1,75.8 416.1,75.8" fill="#ff9896" data-tip="Guillermo del Toro’s Pinocchio — week 2023-01-01 — shape: actual 10.9M, predicted 17.1M"/>
+<circle cx="411.1" cy="155.1" r="4" fill="#ff9896" data-tip="Guillermo del Toro’s Pinocchio — week 2023-01-01 — decay: actual 10.9M, predicted 9.8M"/>
+<polyline points="214.5,208.3 214.5,225.5 214.5,224.1" fill="none" stroke="#9467bd" stroke-width="1" opacity="0.6"/>
+<rect x="210.5" y="204.3" width="8" height="8" fill="#9467bd" data-tip="KPop Demon Hunters — week 2026-08-30 — naive: actual 4.8M, predicted 5.2M"/>
+<polygon points="214.5,220.5 209.5,229.5 219.5,229.5" fill="#9467bd" data-tip="KPop Demon Hunters — week 2026-08-30 — shape: actual 4.8M, predicted 3.7M"/>
+<circle cx="214.5" cy="224.1" r="4" fill="#9467bd" data-tip="KPop Demon Hunters — week 2026-08-30 — decay: actual 4.8M, predicted 3.8M"/>
+<polyline points="261.8,176.6 261.8,188.3 261.8,210.9" fill="none" stroke="#c5b0d5" stroke-width="1" opacity="0.6"/>
+<rect x="257.8" y="172.6" width="8" height="8" fill="#c5b0d5" data-tip="Minions: The Rise of Gru — week 2023-02-26 — naive: actual 6.3M, predicted 8.0M"/>
+<polygon points="261.8,183.3 256.8,192.3 266.8,192.3" fill="#c5b0d5" data-tip="Minions: The Rise of Gru — week 2023-02-26 — shape: actual 6.3M, predicted 6.9M"/>
+<circle cx="261.8" cy="210.9" r="4" fill="#c5b0d5" data-tip="Minions: The Rise of Gru — week 2023-02-26 — decay: actual 6.3M, predicted 5.0M"/>
+<polyline points="249.9,155.5 249.9,170.3 249.9,216.0" fill="none" stroke="#8c564b" stroke-width="1" opacity="0.6"/>
+<rect x="245.9" y="151.5" width="8" height="8" fill="#8c564b" data-tip="Miraculous: Ladybug &amp; Cat Noir, The Movie — week 2023-08-20 — naive: actual 5.9M, predicted 9.8M"/>
+<polygon points="249.9,165.3 244.9,174.3 254.9,174.3" fill="#8c564b" data-tip="Miraculous: Ladybug &amp; Cat Noir, The Movie — week 2023-08-20 — shape: actual 5.9M, predicted 8.5M"/>
+<circle cx="249.9" cy="216.0" r="4" fill="#8c564b" data-tip="Miraculous: Ladybug &amp; Cat Noir, The Movie — week 2023-08-20 — decay: actual 5.9M, predicted 4.5M"/>
+<polyline points="239.3,173.6 239.3,185.7 239.3,214.4" fill="none" stroke="#c49c94" stroke-width="1" opacity="0.6"/>
+<rect x="235.3" y="169.6" width="8" height="8" fill="#c49c94" data-tip="My Little Pony: A New Generation — week 2021-10-24 — naive: actual 5.6M, predicted 8.2M"/>
+<polygon points="239.3,180.7 234.3,189.7 244.3,189.7" fill="#c49c94" data-tip="My Little Pony: A New Generation — week 2021-10-24 — shape: actual 5.6M, predicted 7.2M"/>
+<circle cx="239.3" cy="214.4" r="4" fill="#c49c94" data-tip="My Little Pony: A New Generation — week 2021-10-24 — decay: actual 5.6M, predicted 4.7M"/>
+<polyline points="249.9,176.2 249.9,188.2 249.9,204.1" fill="none" stroke="#e377c2" stroke-width="1" opacity="0.6"/>
+<rect x="245.9" y="172.2" width="8" height="8" fill="#e377c2" data-tip="Nimona — week 2023-07-23 — naive: actual 5.9M, predicted 8.0M"/>
+<polygon points="249.9,183.2 244.9,192.2 254.9,192.2" fill="#e377c2" data-tip="Nimona — week 2023-07-23 — shape: actual 5.9M, predicted 6.9M"/>
+<circle cx="249.9" cy="204.1" r="4" fill="#e377c2" data-tip="Nimona — week 2023-07-23 — decay: actual 5.9M, predicted 5.6M"/>
+<polyline points="246.7,144.0 246.7,160.3 246.7,200.0" fill="none" stroke="#f7b6d2" stroke-width="1" opacity="0.6"/>
+<rect x="242.7" y="140.0" width="8" height="8" fill="#f7b6d2" data-tip="Orion and the Dark — week 2024-02-25 — naive: actual 5.8M, predicted 10.8M"/>
+<polygon points="246.7,155.3 241.7,164.3 251.7,164.3" fill="#f7b6d2" data-tip="Orion and the Dark — week 2024-02-25 — shape: actual 5.8M, predicted 9.4M"/>
+<circle cx="246.7" cy="200.0" r="4" fill="#f7b6d2" data-tip="Orion and the Dark — week 2024-02-25 — decay: actual 5.8M, predicted 5.9M"/>
+<polyline points="214.5,176.2 214.5,189.2 214.5,202.9" fill="none" stroke="#7f7f7f" stroke-width="1" opacity="0.6"/>
+<rect x="210.5" y="172.2" width="8" height="8" fill="#7f7f7f" data-tip="Plankton: The Movie — week 2025-03-30 — naive: actual 4.8M, predicted 8.0M"/>
+<polygon points="214.5,184.2 209.5,193.2 219.5,193.2" fill="#7f7f7f" data-tip="Plankton: The Movie — week 2025-03-30 — shape: actual 4.8M, predicted 6.9M"/>
+<circle cx="214.5" cy="202.9" r="4" fill="#7f7f7f" data-tip="Plankton: The Movie — week 2025-03-30 — decay: actual 4.8M, predicted 5.7M"/>
+<polyline points="264.4,177.7 264.4,189.5 264.4,199.5" fill="none" stroke="#c7c7c7" stroke-width="1" opacity="0.6"/>
+<rect x="260.4" y="173.7" width="8" height="8" fill="#c7c7c7" data-tip="Shrek — week 2022-03-27 — naive: actual 6.3M, predicted 7.9M"/>
+<polygon points="264.4,184.5 259.4,193.5 269.4,193.5" fill="#c7c7c7" data-tip="Shrek — week 2022-03-27 — shape: actual 6.3M, predicted 6.8M"/>
+<circle cx="264.4" cy="199.5" r="4" fill="#c7c7c7" data-tip="Shrek — week 2022-03-27 — decay: actual 6.3M, predicted 6.0M"/>
+<polyline points="294.0,176.7 294.0,189.7 294.0,198.7" fill="none" stroke="#bcbd22" stroke-width="1" opacity="0.6"/>
+<rect x="290.0" y="172.7" width="8" height="8" fill="#bcbd22" data-tip="Sing 2 — week 2022-08-14 — naive: actual 7.3M, predicted 8.0M"/>
+<polygon points="294.0,184.7 289.0,193.7 299.0,193.7" fill="#bcbd22" data-tip="Sing 2 — week 2022-08-14 — shape: actual 7.3M, predicted 6.8M"/>
+<circle cx="294.0" cy="198.7" r="4" fill="#bcbd22" data-tip="Sing 2 — week 2022-08-14 — decay: actual 7.3M, predicted 6.0M"/>
+<polyline points="256.3,49.9 256.3,82.9 256.3,97.7" fill="none" stroke="#dbdb8d" stroke-width="1" opacity="0.6"/>
+<rect x="252.3" y="45.9" width="8" height="8" fill="#dbdb8d" data-tip="That Christmas — week 2025-01-05 — naive: actual 6.1M, predicted 19.0M"/>
+<polygon points="256.3,77.9 251.3,86.9 261.3,86.9" fill="#dbdb8d" data-tip="That Christmas — week 2025-01-05 — shape: actual 6.1M, predicted 16.1M"/>
+<circle cx="256.3" cy="97.7" r="4" fill="#dbdb8d" data-tip="That Christmas — week 2025-01-05 — decay: actual 6.1M, predicted 14.8M"/>
+<polyline points="195.5,208.4 195.5,216.6 195.5,219.8" fill="none" stroke="#17becf" stroke-width="1" opacity="0.6"/>
+<rect x="191.5" y="204.4" width="8" height="8" fill="#17becf" data-tip="The Boss Baby — week 2022-10-30 — naive: actual 4.2M, predicted 5.2M"/>
+<polygon points="195.5,211.6 190.5,220.6 200.5,220.6" fill="#17becf" data-tip="The Boss Baby — week 2022-10-30 — shape: actual 4.2M, predicted 4.5M"/>
+<circle cx="195.5" cy="219.8" r="4" fill="#17becf" data-tip="The Boss Baby — week 2022-10-30 — decay: actual 4.2M, predicted 4.2M"/>
+<polyline points="230.6,201.4 230.6,211.5 230.6,215.7" fill="none" stroke="#9edae5" stroke-width="1" opacity="0.6"/>
+<rect x="226.6" y="197.4" width="8" height="8" fill="#9edae5" data-tip="The Super Mario Bros. Movie — week 2024-02-04 — naive: actual 5.3M, predicted 5.8M"/>
+<polygon points="230.6,206.5 225.6,215.5 235.6,215.5" fill="#9edae5" data-tip="The Super Mario Bros. Movie — week 2024-02-04 — shape: actual 5.3M, predicted 4.9M"/>
+<circle cx="230.6" cy="215.7" r="4" fill="#9edae5" data-tip="The Super Mario Bros. Movie — week 2024-02-04 — decay: actual 5.3M, predicted 4.6M"/>
+<polyline points="217.7,194.5 217.7,203.7 217.7,212.5" fill="none" stroke="#1f77b4" stroke-width="1" opacity="0.6"/>
+<rect x="213.7" y="190.5" width="8" height="8" fill="#1f77b4" data-tip="Trolls Band Together — week 2024-08-18 — naive: actual 4.9M, predicted 6.4M"/>
+<polygon points="217.7,198.7 212.7,207.7 222.7,207.7" fill="#1f77b4" data-tip="Trolls Band Together — week 2024-08-18 — shape: actual 4.9M, predicted 5.6M"/>
+<circle cx="217.7" cy="212.5" r="4" fill="#1f77b4" data-tip="Trolls Band Together — week 2024-08-18 — decay: actual 4.9M, predicted 4.8M"/>
+<polyline points="233.8,160.1 233.8,173.9 233.8,211.1" fill="none" stroke="#aec7e8" stroke-width="1" opacity="0.6"/>
+<rect x="229.8" y="156.1" width="8" height="8" fill="#aec7e8" data-tip="Woody Woodpecker Goes to Camp — week 2024-05-12 — naive: actual 5.4M, predicted 9.4M"/>
+<polygon points="233.8,168.9 228.8,177.9 238.8,177.9" fill="#aec7e8" data-tip="Woody Woodpecker Goes to Camp — week 2024-05-12 — shape: actual 5.4M, predicted 8.2M"/>
+<circle cx="233.8" cy="211.1" r="4" fill="#aec7e8" data-tip="Woody Woodpecker Goes to Camp — week 2024-05-12 — decay: actual 5.4M, predicted 5.0M"/>
+<circle cx="65" cy="311" r="4" fill="#555"/>
+<text x="74" y="315" font-size="11">decay</text>
+<rect x="128.5" y="306" width="9" height="9" fill="#555"/>
+<text x="142.5" y="315" font-size="11">naive</text>
+<polygon points="202.0,306 197.0,315 207.0,315" fill="#555"/>
+<text x="211.0" y="315" font-size="11">shape</text>
+</svg>
+<h2>Rank movement</h2>
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top 10 rank by week — slate titles (rank 1 at top; hover a point)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Top 10 rank by week — slate titles (rank 1 at top; hover a point)</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">1</text>
+<line x1="60" y1="51.1" x2="744" y2="51.1" stroke="#e0e0e0"/>
+<text x="54" y="55.1" text-anchor="end" font-size="10" fill="#555">2</text>
+<line x1="60" y1="78.2" x2="744" y2="78.2" stroke="#e0e0e0"/>
+<text x="54" y="82.2" text-anchor="end" font-size="10" fill="#555">3</text>
+<line x1="60" y1="105.3" x2="744" y2="105.3" stroke="#e0e0e0"/>
+<text x="54" y="109.3" text-anchor="end" font-size="10" fill="#555">4</text>
+<line x1="60" y1="132.4" x2="744" y2="132.4" stroke="#e0e0e0"/>
+<text x="54" y="136.4" text-anchor="end" font-size="10" fill="#555">5</text>
+<line x1="60" y1="159.6" x2="744" y2="159.6" stroke="#e0e0e0"/>
+<text x="54" y="163.6" text-anchor="end" font-size="10" fill="#555">6</text>
+<line x1="60" y1="186.7" x2="744" y2="186.7" stroke="#e0e0e0"/>
+<text x="54" y="190.7" text-anchor="end" font-size="10" fill="#555">7</text>
+<line x1="60" y1="213.8" x2="744" y2="213.8" stroke="#e0e0e0"/>
+<text x="54" y="217.8" text-anchor="end" font-size="10" fill="#555">8</text>
+<line x1="60" y1="240.9" x2="744" y2="240.9" stroke="#e0e0e0"/>
+<text x="54" y="244.9" text-anchor="end" font-size="10" fill="#555">9</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">10</text>
+<text x="14" y="146" font-size="10" fill="#555" transform="rotate(-90 14 146)" text-anchor="middle">Top 10 rank</text>
+<text x="60.0" y="282" text-anchor="middle" font-size="10" fill="#555">2025-01-12</text>
+<text x="156.6" y="282" text-anchor="middle" font-size="10" fill="#555">2025-04-06</text>
+<text x="253.1" y="282" text-anchor="middle" font-size="10" fill="#555">2025-06-29</text>
+<text x="349.7" y="282" text-anchor="middle" font-size="10" fill="#555">2025-09-21</text>
+<text x="446.3" y="282" text-anchor="middle" font-size="10" fill="#555">2025-12-14</text>
+<text x="542.8" y="282" text-anchor="middle" font-size="10" fill="#555">2026-03-08</text>
+<text x="639.4" y="282" text-anchor="middle" font-size="10" fill="#555">2026-05-31</text>
+<text x="736.0" y="282" text-anchor="middle" font-size="10" fill="#555">2026-08-23</text>
+<circle cx="60.0" cy="159.6" r="4" fill="#1f77b4" data-tip="Wallace &amp; Gromit: Vengeance Most Fowl: 2025-01-12 — rank 6, 6.3M hours"/>
+<text x="66.0" y="162.6" font-size="9" fill="#1f77b4">Wallace &amp; Gromit: Vengeance Most Fowl</text>
+<circle cx="100.2" cy="186.7" r="4" fill="#aec7e8" data-tip="The Witcher: Sirens of the Deep: 2025-02-16 — rank 7, 7.3M hours"/>
+<text x="106.2" y="189.7" font-size="9" fill="#aec7e8">The Witcher: Sirens of the Deep</text>
+<polyline points="116.3,51.1 124.4,51.1 132.4,132.4 140.5,186.7 148.5,213.8" fill="none" stroke="#ff7f0e" stroke-width="2"/>
+<circle cx="116.3" cy="51.1" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-02 — rank 2, 13.8M hours"/>
+<circle cx="124.4" cy="51.1" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-09 — rank 2, 15.9M hours"/>
+<circle cx="132.4" cy="132.4" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-16 — rank 5, 9.5M hours"/>
+<circle cx="140.5" cy="186.7" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-23 — rank 7, 7.7M hours"/>
+<circle cx="148.5" cy="213.8" r="3" fill="#ff7f0e" data-tip="Despicable Me 4: 2025-03-30 — rank 8, 6.4M hours"/>
+<text x="154.5" y="216.8" font-size="9" fill="#ff7f0e">Despicable Me 4</text>
+<polyline points="124.4,24.0 132.4,51.1 140.5,159.6 148.5,268.0" fill="none" stroke="#ffbb78" stroke-width="2"/>
+<circle cx="124.4" cy="24.0" r="3" fill="#ffbb78" data-tip="Plankton: The Movie: 2025-03-09 — rank 1, 21.0M hours"/>
+<circle cx="132.4" cy="51.1" r="3" fill="#ffbb78" data-tip="Plankton: The Movie: 2025-03-16 — rank 2, 19.6M hours"/>
+<circle cx="140.5" cy="159.6" r="3" fill="#ffbb78" data-tip="Plankton: The Movie: 2025-03-23 — rank 6, 8.0M hours"/>
+<circle cx="148.5" cy="268.0" r="3" fill="#ffbb78" data-tip="Plankton: The Movie: 2025-03-30 — rank 10, 4.8M hours"/>
+<text x="154.5" y="271.0" font-size="9" fill="#ffbb78">Plankton</text>
+<circle cx="180.7" cy="268.0" r="4" fill="#2ca02c" data-tip="My Hero Academia: You&#x27;re Next: 2025-04-27 — rank 10, 2.2M hours"/>
+<text x="186.7" y="271.0" font-size="9" fill="#2ca02c">My Hero Academia: You&#x27;re Next</text>
+<circle cx="188.8" cy="213.8" r="4" fill="#98df8a" data-tip="The Rose of Versailles: 2025-05-04 — rank 8, 2.5M hours"/>
+<text x="194.8" y="216.8" font-size="9" fill="#98df8a">The Rose of Versailles</text>
+<polyline points="212.9,268.0 220.9,51.1 229.0,268.0" fill="none" stroke="#d62728" stroke-width="2"/>
+<circle cx="212.9" cy="268.0" r="3" fill="#d62728" data-tip="The Wild Robot: 2025-05-25 — rank 10, 5.6M hours"/>
+<circle cx="220.9" cy="51.1" r="3" fill="#d62728" data-tip="The Wild Robot: 2025-06-01 — rank 2, 9.9M hours"/>
+<circle cx="229.0" cy="268.0" r="3" fill="#d62728" data-tip="The Wild Robot: 2025-06-08 — rank 10, 4.3M hours"/>
+<text x="235.0" y="271.0" font-size="9" fill="#d62728">Wild Robot</text>
+<polyline points="245.1,51.1 253.1,24.0 261.2,51.1 269.2,24.0 277.3,24.0 285.3,51.1 293.4,51.1 301.4,51.1 309.5,24.0 317.5,24.0 325.6,24.0 333.6,51.1 341.6,24.0 349.7,51.1 357.7,24.0 365.8,24.0 373.8,51.1 381.9,78.2 389.9,78.2 398.0,51.1 406.0,51.1 414.1,78.2 422.1,132.4 430.2,78.2 438.2,78.2 446.3,105.3 454.3,78.2 462.4,78.2 470.4,51.1 478.4,105.3 486.5,105.3 494.5,132.4 502.6,78.2 510.6,78.2 518.7,105.3 526.7,78.2 534.8,51.1 542.8,78.2 550.9,105.3 558.9,105.3 567.0,105.3 575.0,186.7 583.1,159.6 591.1,132.4 599.2,159.6 607.2,132.4 615.2,132.4 623.3,159.6 631.3,268.0 639.4,240.9 647.4,268.0 655.5,159.6 663.5,159.6 671.6,159.6 679.6,159.6 687.7,268.0 695.7,159.6 703.8,186.7 711.8,132.4 719.9,159.6 727.9,240.9 736.0,159.6 744.0,213.8" fill="none" stroke="#ff9896" stroke-width="2"/>
+<circle cx="245.1" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-06-22 — rank 2, 15.4M hours"/>
+<circle cx="253.1" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-06-29 — rank 1, 40.3M hours"/>
+<circle cx="261.2" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-07-06 — rank 2, 37.8M hours"/>
+<circle cx="269.2" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-07-13 — rank 1, 40.4M hours"/>
+<circle cx="277.3" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-07-20 — rank 1, 43.0M hours"/>
+<circle cx="285.3" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-07-27 — rank 2, 43.9M hours"/>
+<circle cx="293.4" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-03 — rank 2, 43.8M hours"/>
+<circle cx="301.4" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-10 — rank 2, 43.1M hours"/>
+<circle cx="309.5" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-17 — rank 1, 43.3M hours"/>
+<circle cx="317.5" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-24 — rank 1, 42.4M hours"/>
+<circle cx="325.6" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-08-31 — rank 1, 50.2M hours"/>
+<circle cx="333.6" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-09-07 — rank 2, 42.4M hours"/>
+<circle cx="341.6" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-09-14 — rank 1, 37.7M hours"/>
+<circle cx="349.7" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-09-21 — rank 2, 35.4M hours"/>
+<circle cx="357.7" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-09-28 — rank 1, 32.2M hours"/>
+<circle cx="365.8" cy="24.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-10-05 — rank 1, 30.2M hours"/>
+<circle cx="373.8" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-10-12 — rank 2, 29.7M hours"/>
+<circle cx="381.9" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-10-19 — rank 3, 27.0M hours"/>
+<circle cx="389.9" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-10-26 — rank 3, 24.4M hours"/>
+<circle cx="398.0" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-02 — rank 2, 23.3M hours"/>
+<circle cx="406.0" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-09 — rank 2, 20.7M hours"/>
+<circle cx="414.1" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-16 — rank 3, 19.3M hours"/>
+<circle cx="422.1" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-23 — rank 5, 16.9M hours"/>
+<circle cx="430.2" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-11-30 — rank 3, 17.3M hours"/>
+<circle cx="438.2" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-12-07 — rank 3, 14.4M hours"/>
+<circle cx="446.3" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-12-14 — rank 4, 13.4M hours"/>
+<circle cx="454.3" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-12-21 — rank 3, 13.1M hours"/>
+<circle cx="462.4" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2025-12-28 — rank 3, 15.1M hours"/>
+<circle cx="470.4" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-01-04 — rank 2, 15.7M hours"/>
+<circle cx="478.4" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-01-11 — rank 4, 12.6M hours"/>
+<circle cx="486.5" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-01-18 — rank 4, 12.1M hours"/>
+<circle cx="494.5" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-01-25 — rank 5, 11.7M hours"/>
+<circle cx="502.6" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-02-01 — rank 3, 11.4M hours"/>
+<circle cx="510.6" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-02-08 — rank 3, 10.1M hours"/>
+<circle cx="518.7" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-02-15 — rank 4, 9.5M hours"/>
+<circle cx="526.7" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-02-22 — rank 3, 10.0M hours"/>
+<circle cx="534.8" cy="51.1" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-01 — rank 2, 8.4M hours"/>
+<circle cx="542.8" cy="78.2" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-08 — rank 3, 7.9M hours"/>
+<circle cx="550.9" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-15 — rank 4, 8.8M hours"/>
+<circle cx="558.9" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-22 — rank 4, 9.0M hours"/>
+<circle cx="567.0" cy="105.3" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-03-29 — rank 4, 8.2M hours"/>
+<circle cx="575.0" cy="186.7" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-04-05 — rank 7, 8.5M hours"/>
+<circle cx="583.1" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-04-12 — rank 6, 8.0M hours"/>
+<circle cx="591.1" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-04-19 — rank 5, 7.4M hours"/>
+<circle cx="599.2" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-04-26 — rank 6, 7.0M hours"/>
+<circle cx="607.2" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-03 — rank 5, 6.5M hours"/>
+<circle cx="615.2" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-10 — rank 5, 6.0M hours"/>
+<circle cx="623.3" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-17 — rank 6, 6.4M hours"/>
+<circle cx="631.3" cy="268.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-24 — rank 10, 6.4M hours"/>
+<circle cx="639.4" cy="240.9" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-05-31 — rank 9, 6.3M hours"/>
+<circle cx="647.4" cy="268.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-06-07 — rank 10, 6.2M hours"/>
+<circle cx="655.5" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-06-14 — rank 6, 6.0M hours"/>
+<circle cx="663.5" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-06-21 — rank 6, 6.0M hours"/>
+<circle cx="671.6" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-06-28 — rank 6, 6.3M hours"/>
+<circle cx="679.6" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-07-05 — rank 6, 5.8M hours"/>
+<circle cx="687.7" cy="268.0" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-07-12 — rank 10, 5.8M hours"/>
+<circle cx="695.7" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-07-19 — rank 6, 5.7M hours"/>
+<circle cx="703.8" cy="186.7" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-07-26 — rank 7, 6.1M hours"/>
+<circle cx="711.8" cy="132.4" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-02 — rank 5, 5.9M hours"/>
+<circle cx="719.9" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-09 — rank 6, 5.5M hours"/>
+<circle cx="727.9" cy="240.9" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-16 — rank 9, 5.5M hours"/>
+<circle cx="736.0" cy="159.6" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-23 — rank 6, 5.2M hours"/>
+<circle cx="744.0" cy="213.8" r="3" fill="#ff9896" data-tip="KPop Demon Hunters: 2026-08-30 — rank 8, 4.8M hours"/>
+<text x="738.0" y="216.8" text-anchor="end" font-size="9" fill="#ff9896">KPop</text>
+<polyline points="349.7,132.4 357.7,105.3 365.8,186.7" fill="none" stroke="#9467bd" stroke-width="2"/>
+<circle cx="349.7" cy="132.4" r="3" fill="#9467bd" data-tip="Mahavatar Narsimha: 2025-09-21 — rank 5, 5.0M hours"/>
+<circle cx="357.7" cy="105.3" r="3" fill="#9467bd" data-tip="Mahavatar Narsimha: 2025-09-28 — rank 4, 6.6M hours"/>
+<circle cx="365.8" cy="186.7" r="3" fill="#9467bd" data-tip="Mahavatar Narsimha: 2025-10-05 — rank 7, 2.9M hours"/>
+<text x="371.8" y="189.7" font-size="9" fill="#9467bd">Mahavatar Narsimha</text>
+<polyline points="381.9,132.4 389.9,132.4 398.0,213.8" fill="none" stroke="#c5b0d5" stroke-width="2"/>
+<circle cx="381.9" cy="132.4" r="3" fill="#c5b0d5" data-tip="The Twits: 2025-10-19 — rank 5, 10.2M hours"/>
+<circle cx="389.9" cy="132.4" r="3" fill="#c5b0d5" data-tip="The Twits: 2025-10-26 — rank 5, 13.9M hours"/>
+<circle cx="398.0" cy="213.8" r="3" fill="#c5b0d5" data-tip="The Twits: 2025-11-02 — rank 8, 5.7M hours"/>
+<text x="404.0" y="216.8" font-size="9" fill="#c5b0d5">The Twits</text>
+<circle cx="406.0" cy="268.0" r="4" fill="#8c564b" data-tip="Dr. Seuss&#x27;s The Sneetches: 2025-11-09 — rank 10, 3.1M hours"/>
+<text x="412.0" y="271.0" font-size="9" fill="#8c564b">Dr. Seuss&#x27;s The Sneetches</text>
+<polyline points="494.5,186.7 502.6,213.8 510.6,268.0" fill="none" stroke="#c49c94" stroke-width="2"/>
+<circle cx="494.5" cy="186.7" r="3" fill="#c49c94" data-tip="Cosmic Princess Kaguya!: 2026-01-25 — rank 7, 2.3M hours"/>
+<circle cx="502.6" cy="213.8" r="3" fill="#c49c94" data-tip="Cosmic Princess Kaguya!: 2026-02-01 — rank 8, 2.9M hours"/>
+<circle cx="510.6" cy="268.0" r="3" fill="#c49c94" data-tip="Cosmic Princess Kaguya!: 2026-02-08 — rank 10, 1.9M hours"/>
+<text x="516.6" y="271.0" font-size="9" fill="#c49c94">Cosmic Princess Kaguya!</text>
+<circle cx="567.0" cy="132.4" r="4" fill="#e377c2" data-tip="The Bad Guys 2: 2026-03-29 — rank 5, 7.4M hours"/>
+<text x="573.0" y="135.4" font-size="9" fill="#e377c2">The Bad Guys 2</text>
+<polyline points="639.4,51.1 647.4,186.7" fill="none" stroke="#f7b6d2" stroke-width="2"/>
+<circle cx="639.4" cy="51.1" r="3" fill="#f7b6d2" data-tip="Emi Martínez: The Kid Who Stops Time: 2026-05-31 — rank 2, 2.4M hours"/>
+<circle cx="647.4" cy="186.7" r="3" fill="#f7b6d2" data-tip="Emi Martínez: The Kid Who Stops Time: 2026-06-07 — rank 7, 1.4M hours"/>
+<text x="653.4" y="189.7" font-size="9" fill="#f7b6d2">Emi Martínez: The Kid Who Stops Time</text>
+</svg>
+<h2>Title trajectories</h2>
+<svg viewBox="0 0 764 436" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Weekly trajectory per title — first runs (each panel scaled to its own peak)">
+<text x="382" y="16" text-anchor="middle" font-size="13" font-weight="bold">Weekly trajectory per title — first runs (each panel scaled to its own peak)</text>
+<rect x="8" y="30" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="43" font-size="10" font-weight="bold">Wallace &amp; Gromit: Vengeance Most Fowl</text>
+<text x="368" y="43" text-anchor="end" font-size="9" fill="#555">peak 6.3M</text>
+<circle cx="14" cy="48" r="3" fill="#1f77b4"/>
+<rect x="382" y="30" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="43" font-size="10" font-weight="bold">The Witcher: Sirens of the Deep</text>
+<text x="742" y="43" text-anchor="end" font-size="9" fill="#555">peak 7.3M</text>
+<circle cx="388" cy="48" r="3" fill="#aec7e8"/>
+<rect x="8" y="88" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="101" font-size="10" font-weight="bold">Despicable Me 4</text>
+<text x="368" y="101" text-anchor="end" font-size="9" fill="#555">peak 15.9M</text>
+<polyline points="14.0,109.4 102.5,106.0 191.0,116.5 279.5,119.4 368.0,121.5" fill="none" stroke="#ff7f0e" stroke-width="1.5"/>
+<rect x="382" y="88" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="101" font-size="10" font-weight="bold">Plankton</text>
+<text x="742" y="101" text-anchor="end" font-size="9" fill="#555">peak 21.0M</text>
+<polyline points="388.0,106.0 506.0,107.7 624.0,122.1 742.0,126.1" fill="none" stroke="#ffbb78" stroke-width="1.5"/>
+<rect x="8" y="146" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="159" font-size="10" font-weight="bold">My Hero Academia: You&#x27;re Next</text>
+<text x="368" y="159" text-anchor="end" font-size="9" fill="#555">peak 2.2M</text>
+<circle cx="14" cy="164" r="3" fill="#2ca02c"/>
+<rect x="382" y="146" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="159" font-size="10" font-weight="bold">The Rose of Versailles</text>
+<text x="742" y="159" text-anchor="end" font-size="9" fill="#555">peak 2.5M</text>
+<circle cx="388" cy="164" r="3" fill="#98df8a"/>
+<rect x="8" y="204" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="217" font-size="10" font-weight="bold">Wild Robot</text>
+<text x="368" y="217" text-anchor="end" font-size="9" fill="#555">peak 9.9M</text>
+<polyline points="14.0,233.3 191.0,222.0 368.0,236.7" fill="none" stroke="#d62728" stroke-width="1.5"/>
+<rect x="382" y="204" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="217" font-size="10" font-weight="bold">KPop</text>
+<text x="742" y="217" text-anchor="end" font-size="9" fill="#555">peak 50.2M</text>
+<polyline points="388.0,240.0 393.7,227.1 399.4,228.4 405.1,227.1 410.8,225.7 416.5,225.3 422.3,225.3 428.0,225.7 433.7,225.6 439.4,226.0 445.1,222.0 450.8,226.0 456.5,228.5 462.2,229.7 467.9,231.3 473.6,232.4 479.4,232.6 485.1,234.0 490.8,235.4 496.5,235.9 502.2,237.3 507.9,238.0 513.6,239.2 519.3,239.0 525.0,240.5 530.7,241.1 536.5,241.2 542.2,240.2 547.9,239.9 553.6,241.5 559.3,241.7 565.0,241.9 570.7,242.1 576.4,242.8 582.1,243.1 587.8,242.8 593.5,243.6 599.3,243.9 605.0,243.4 610.7,243.3 616.4,243.8 622.1,243.6 627.8,243.9 633.5,244.2 639.2,244.4 644.9,244.6 650.6,244.9 656.4,244.7 662.1,244.7 667.8,244.7 673.5,244.8 679.2,244.9 684.9,244.9 690.6,244.7 696.3,245.0 702.0,245.0 707.7,245.0 713.5,244.8 719.2,244.9 724.9,245.2 730.6,245.2 736.3,245.3 742.0,245.5" fill="none" stroke="#ff9896" stroke-width="1.5"/>
+<rect x="8" y="262" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="275" font-size="10" font-weight="bold">Mahavatar Narsimha</text>
+<text x="368" y="275" text-anchor="end" font-size="9" fill="#555">peak 6.6M</text>
+<polyline points="14.0,286.3 191.0,280.0 368.0,294.6" fill="none" stroke="#9467bd" stroke-width="1.5"/>
+<rect x="382" y="262" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="275" font-size="10" font-weight="bold">The Twits</text>
+<text x="742" y="275" text-anchor="end" font-size="9" fill="#555">peak 13.9M</text>
+<polyline points="388.0,286.9 565.0,280.0 742.0,295.3" fill="none" stroke="#c5b0d5" stroke-width="1.5"/>
+<rect x="8" y="320" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="333" font-size="10" font-weight="bold">Dr. Seuss&#x27;s The Sneetches</text>
+<text x="368" y="333" text-anchor="end" font-size="9" fill="#555">peak 3.1M</text>
+<circle cx="14" cy="338" r="3" fill="#8c564b"/>
+<rect x="382" y="320" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="333" font-size="10" font-weight="bold">Cosmic Princess Kaguya!</text>
+<text x="742" y="333" text-anchor="end" font-size="9" fill="#555">peak 2.9M</text>
+<polyline points="388.0,343.4 565.0,338.0 742.0,347.0" fill="none" stroke="#c49c94" stroke-width="1.5"/>
+<rect x="8" y="378" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="14" y="391" font-size="10" font-weight="bold">The Bad Guys 2</text>
+<text x="368" y="391" text-anchor="end" font-size="9" fill="#555">peak 7.4M</text>
+<circle cx="14" cy="396" r="3" fill="#e377c2"/>
+<rect x="382" y="378" width="366" height="50" fill="none" stroke="#e0e0e0"/>
+<text x="388" y="391" font-size="10" font-weight="bold">Emi Martínez: The Kid Who Stops Time</text>
+<text x="742" y="391" text-anchor="end" font-size="9" fill="#555">peak 2.4M</text>
+<polyline points="388.0,396.0 742.0,406.8" fill="none" stroke="#f7b6d2" stroke-width="1.5"/>
+</svg>
+<h2>Hours viewed heatmap</h2>
+<svg viewBox="0 0 760 330" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Weekly hours viewed by title and week (log colour scale; blank = not in the Top 10 that week)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Weekly hours viewed by title and week (log colour scale; blank = not in the Top 10 that week)</text>
+<text x="215.0" y="30" font-size="9" fill="#555">2025-01-12</text>
+<text x="288.8" y="30" font-size="9" fill="#555">2025-04-06</text>
+<text x="362.6" y="30" font-size="9" fill="#555">2025-06-29</text>
+<text x="436.4" y="30" font-size="9" fill="#555">2025-09-21</text>
+<text x="510.3" y="30" font-size="9" fill="#555">2025-12-14</text>
+<text x="584.1" y="30" font-size="9" fill="#555">2026-03-08</text>
+<text x="657.9" y="30" font-size="9" fill="#555">2026-05-31</text>
+<text x="731.7" y="30" font-size="9" fill="#555">2026-08-23</text>
+<text x="209" y="50.5" text-anchor="end" font-size="10">Wallace &amp; Gromit: Vengeance Most Fowl</text>
+<rect x="215.0" y="38" width="6.2" height="18" fill="rgb(132,170,209)" data-tip="Wallace &amp; Gromit: Vengeance Most Fowl — 2025-01-12 — 6.3M hours"/>
+<rect x="221.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="38" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="69.5" text-anchor="end" font-size="10">The Witcher: Sirens of the Deep</text>
+<rect x="215.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="57" width="6.2" height="18" fill="rgb(123,164,205)" data-tip="The Witcher: Sirens of the Deep — 2025-02-16 — 7.3M hours"/>
+<rect x="251.9" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="57" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="88.5" text-anchor="end" font-size="10">Despicable Me 4</text>
+<rect x="215.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="76" width="6.2" height="18" fill="rgb(85,137,189)" data-tip="Despicable Me 4 — 2025-03-02 — 13.8M hours"/>
+<rect x="264.2" y="76" width="6.2" height="18" fill="rgb(77,130,185)" data-tip="Despicable Me 4 — 2025-03-09 — 15.9M hours"/>
+<rect x="270.4" y="76" width="6.2" height="18" fill="rgb(108,153,198)" data-tip="Despicable Me 4 — 2025-03-16 — 9.5M hours"/>
+<rect x="276.5" y="76" width="6.2" height="18" fill="rgb(120,162,204)" data-tip="Despicable Me 4 — 2025-03-23 — 7.7M hours"/>
+<rect x="282.7" y="76" width="6.2" height="18" fill="rgb(131,170,208)" data-tip="Despicable Me 4 — 2025-03-30 — 6.4M hours"/>
+<rect x="288.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="76" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="107.5" text-anchor="end" font-size="10">Plankton</text>
+<rect x="215.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="95" width="6.2" height="18" fill="rgb(60,118,178)" data-tip="Plankton: The Movie — 2025-03-09 — 21.0M hours"/>
+<rect x="270.4" y="95" width="6.2" height="18" fill="rgb(64,121,180)" data-tip="Plankton: The Movie — 2025-03-16 — 19.6M hours"/>
+<rect x="276.5" y="95" width="6.2" height="18" fill="rgb(118,160,203)" data-tip="Plankton: The Movie — 2025-03-23 — 8.0M hours"/>
+<rect x="282.7" y="95" width="6.2" height="18" fill="rgb(148,182,216)" data-tip="Plankton: The Movie — 2025-03-30 — 4.8M hours"/>
+<rect x="288.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="95" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="126.5" text-anchor="end" font-size="10">My Hero Academia: You&#x27;re Next</text>
+<rect x="215.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="114" width="6.2" height="18" fill="rgb(195,216,236)" data-tip="My Hero Academia: You&#x27;re Next — 2025-04-27 — 2.2M hours"/>
+<rect x="313.4" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="114" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="145.5" text-anchor="end" font-size="10">The Rose of Versailles</text>
+<rect x="215.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="133" width="6.2" height="18" fill="rgb(187,210,232)" data-tip="The Rose of Versailles — 2025-05-04 — 2.5M hours"/>
+<rect x="319.6" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="133" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="164.5" text-anchor="end" font-size="10">Wild Robot</text>
+<rect x="215.0" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="152" width="6.2" height="18" fill="rgb(139,175,212)" data-tip="The Wild Robot — 2025-05-25 — 5.6M hours"/>
+<rect x="338.0" y="152" width="6.2" height="18" fill="rgb(105,151,197)" data-tip="The Wild Robot — 2025-06-01 — 9.9M hours"/>
+<rect x="344.2" y="152" width="6.2" height="18" fill="rgb(155,187,218)" data-tip="The Wild Robot — 2025-06-08 — 4.3M hours"/>
+<rect x="350.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="152" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="183.5" text-anchor="end" font-size="10">KPop</text>
+<rect x="215.0" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="171" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="171" width="6.2" height="18" fill="rgb(79,132,186)" data-tip="KPop Demon Hunters — 2025-06-22 — 15.4M hours"/>
+<rect x="362.6" y="171" width="6.2" height="18" fill="rgb(21,90,162)" data-tip="KPop Demon Hunters — 2025-06-29 — 40.3M hours"/>
+<rect x="368.8" y="171" width="6.2" height="18" fill="rgb(25,93,163)" data-tip="KPop Demon Hunters — 2025-07-06 — 37.8M hours"/>
+<rect x="374.9" y="171" width="6.2" height="18" fill="rgb(21,90,162)" data-tip="KPop Demon Hunters — 2025-07-13 — 40.4M hours"/>
+<rect x="381.1" y="171" width="6.2" height="18" fill="rgb(17,88,160)" data-tip="KPop Demon Hunters — 2025-07-20 — 43.0M hours"/>
+<rect x="387.2" y="171" width="6.2" height="18" fill="rgb(16,87,159)" data-tip="KPop Demon Hunters — 2025-07-27 — 43.9M hours"/>
+<rect x="393.4" y="171" width="6.2" height="18" fill="rgb(16,87,159)" data-tip="KPop Demon Hunters — 2025-08-03 — 43.8M hours"/>
+<rect x="399.5" y="171" width="6.2" height="18" fill="rgb(17,88,160)" data-tip="KPop Demon Hunters — 2025-08-10 — 43.1M hours"/>
+<rect x="405.7" y="171" width="6.2" height="18" fill="rgb(17,87,160)" data-tip="KPop Demon Hunters — 2025-08-17 — 43.3M hours"/>
+<rect x="411.8" y="171" width="6.2" height="18" fill="rgb(18,88,160)" data-tip="KPop Demon Hunters — 2025-08-24 — 42.4M hours"/>
+<rect x="418.0" y="171" width="6.2" height="18" fill="rgb(8,81,156)" data-tip="KPop Demon Hunters — 2025-08-31 — 50.2M hours"/>
+<rect x="424.1" y="171" width="6.2" height="18" fill="rgb(18,88,160)" data-tip="KPop Demon Hunters — 2025-09-07 — 42.4M hours"/>
+<rect x="430.3" y="171" width="6.2" height="18" fill="rgb(25,93,163)" data-tip="KPop Demon Hunters — 2025-09-14 — 37.7M hours"/>
+<rect x="436.4" y="171" width="6.2" height="18" fill="rgb(29,96,165)" data-tip="KPop Demon Hunters — 2025-09-21 — 35.4M hours"/>
+<rect x="442.6" y="171" width="6.2" height="18" fill="rgb(35,100,167)" data-tip="KPop Demon Hunters — 2025-09-28 — 32.2M hours"/>
+<rect x="448.7" y="171" width="6.2" height="18" fill="rgb(38,103,169)" data-tip="KPop Demon Hunters — 2025-10-05 — 30.2M hours"/>
+<rect x="454.9" y="171" width="6.2" height="18" fill="rgb(39,104,169)" data-tip="KPop Demon Hunters — 2025-10-12 — 29.7M hours"/>
+<rect x="461.0" y="171" width="6.2" height="18" fill="rgb(45,108,172)" data-tip="KPop Demon Hunters — 2025-10-19 — 27.0M hours"/>
+<rect x="467.2" y="171" width="6.2" height="18" fill="rgb(51,112,174)" data-tip="KPop Demon Hunters — 2025-10-26 — 24.4M hours"/>
+<rect x="473.3" y="171" width="6.2" height="18" fill="rgb(54,114,176)" data-tip="KPop Demon Hunters — 2025-11-02 — 23.3M hours"/>
+<rect x="479.5" y="171" width="6.2" height="18" fill="rgb(61,119,179)" data-tip="KPop Demon Hunters — 2025-11-09 — 20.7M hours"/>
+<rect x="485.7" y="171" width="6.2" height="18" fill="rgb(65,122,180)" data-tip="KPop Demon Hunters — 2025-11-16 — 19.3M hours"/>
+<rect x="491.8" y="171" width="6.2" height="18" fill="rgb(73,128,184)" data-tip="KPop Demon Hunters — 2025-11-23 — 16.9M hours"/>
+<rect x="498.0" y="171" width="6.2" height="18" fill="rgb(72,127,183)" data-tip="KPop Demon Hunters — 2025-11-30 — 17.3M hours"/>
+<rect x="504.1" y="171" width="6.2" height="18" fill="rgb(83,135,188)" data-tip="KPop Demon Hunters — 2025-12-07 — 14.4M hours"/>
+<rect x="510.3" y="171" width="6.2" height="18" fill="rgb(87,138,190)" data-tip="KPop Demon Hunters — 2025-12-14 — 13.4M hours"/>
+<rect x="516.4" y="171" width="6.2" height="18" fill="rgb(88,139,190)" data-tip="KPop Demon Hunters — 2025-12-21 — 13.1M hours"/>
+<rect x="522.6" y="171" width="6.2" height="18" fill="rgb(80,133,187)" data-tip="KPop Demon Hunters — 2025-12-28 — 15.1M hours"/>
+<rect x="528.7" y="171" width="6.2" height="18" fill="rgb(77,131,186)" data-tip="KPop Demon Hunters — 2026-01-04 — 15.7M hours"/>
+<rect x="534.9" y="171" width="6.2" height="18" fill="rgb(91,140,191)" data-tip="KPop Demon Hunters — 2026-01-11 — 12.6M hours"/>
+<rect x="541.0" y="171" width="6.2" height="18" fill="rgb(93,142,192)" data-tip="KPop Demon Hunters — 2026-01-18 — 12.1M hours"/>
+<rect x="547.2" y="171" width="6.2" height="18" fill="rgb(95,144,193)" data-tip="KPop Demon Hunters — 2026-01-25 — 11.7M hours"/>
+<rect x="553.3" y="171" width="6.2" height="18" fill="rgb(97,145,194)" data-tip="KPop Demon Hunters — 2026-02-01 — 11.4M hours"/>
+<rect x="559.5" y="171" width="6.2" height="18" fill="rgb(104,150,197)" data-tip="KPop Demon Hunters — 2026-02-08 — 10.1M hours"/>
+<rect x="565.6" y="171" width="6.2" height="18" fill="rgb(108,153,198)" data-tip="KPop Demon Hunters — 2026-02-15 — 9.5M hours"/>
+<rect x="571.8" y="171" width="6.2" height="18" fill="rgb(104,150,197)" data-tip="KPop Demon Hunters — 2026-02-22 — 10.0M hours"/>
+<rect x="577.9" y="171" width="6.2" height="18" fill="rgb(115,158,201)" data-tip="KPop Demon Hunters — 2026-03-01 — 8.4M hours"/>
+<rect x="584.1" y="171" width="6.2" height="18" fill="rgb(119,161,203)" data-tip="KPop Demon Hunters — 2026-03-08 — 7.9M hours"/>
+<rect x="590.2" y="171" width="6.2" height="18" fill="rgb(112,156,200)" data-tip="KPop Demon Hunters — 2026-03-15 — 8.8M hours"/>
+<rect x="596.4" y="171" width="6.2" height="18" fill="rgb(111,155,200)" data-tip="KPop Demon Hunters — 2026-03-22 — 9.0M hours"/>
+<rect x="602.5" y="171" width="6.2" height="18" fill="rgb(116,159,202)" data-tip="KPop Demon Hunters — 2026-03-29 — 8.2M hours"/>
+<rect x="608.7" y="171" width="6.2" height="18" fill="rgb(114,157,201)" data-tip="KPop Demon Hunters — 2026-04-05 — 8.5M hours"/>
+<rect x="614.8" y="171" width="6.2" height="18" fill="rgb(118,160,203)" data-tip="KPop Demon Hunters — 2026-04-12 — 8.0M hours"/>
+<rect x="621.0" y="171" width="6.2" height="18" fill="rgb(122,163,205)" data-tip="KPop Demon Hunters — 2026-04-19 — 7.4M hours"/>
+<rect x="627.1" y="171" width="6.2" height="18" fill="rgb(126,166,206)" data-tip="KPop Demon Hunters — 2026-04-26 — 7.0M hours"/>
+<rect x="633.3" y="171" width="6.2" height="18" fill="rgb(130,169,208)" data-tip="KPop Demon Hunters — 2026-05-03 — 6.5M hours"/>
+<rect x="639.4" y="171" width="6.2" height="18" fill="rgb(135,172,210)" data-tip="KPop Demon Hunters — 2026-05-10 — 6.0M hours"/>
+<rect x="645.6" y="171" width="6.2" height="18" fill="rgb(131,170,208)" data-tip="KPop Demon Hunters — 2026-05-17 — 6.4M hours"/>
+<rect x="651.7" y="171" width="6.2" height="18" fill="rgb(131,170,208)" data-tip="KPop Demon Hunters — 2026-05-24 — 6.4M hours"/>
+<rect x="657.9" y="171" width="6.2" height="18" fill="rgb(132,170,209)" data-tip="KPop Demon Hunters — 2026-05-31 — 6.3M hours"/>
+<rect x="664.0" y="171" width="6.2" height="18" fill="rgb(133,171,209)" data-tip="KPop Demon Hunters — 2026-06-07 — 6.2M hours"/>
+<rect x="670.2" y="171" width="6.2" height="18" fill="rgb(135,172,210)" data-tip="KPop Demon Hunters — 2026-06-14 — 6.0M hours"/>
+<rect x="676.3" y="171" width="6.2" height="18" fill="rgb(135,172,210)" data-tip="KPop Demon Hunters — 2026-06-21 — 6.0M hours"/>
+<rect x="682.5" y="171" width="6.2" height="18" fill="rgb(132,170,209)" data-tip="KPop Demon Hunters — 2026-06-28 — 6.3M hours"/>
+<rect x="688.6" y="171" width="6.2" height="18" fill="rgb(137,174,211)" data-tip="KPop Demon Hunters — 2026-07-05 — 5.8M hours"/>
+<rect x="694.8" y="171" width="6.2" height="18" fill="rgb(137,174,211)" data-tip="KPop Demon Hunters — 2026-07-12 — 5.8M hours"/>
+<rect x="700.9" y="171" width="6.2" height="18" fill="rgb(138,175,211)" data-tip="KPop Demon Hunters — 2026-07-19 — 5.7M hours"/>
+<rect x="707.1" y="171" width="6.2" height="18" fill="rgb(134,172,210)" data-tip="KPop Demon Hunters — 2026-07-26 — 6.1M hours"/>
+<rect x="713.2" y="171" width="6.2" height="18" fill="rgb(136,173,210)" data-tip="KPop Demon Hunters — 2026-08-02 — 5.9M hours"/>
+<rect x="719.4" y="171" width="6.2" height="18" fill="rgb(140,176,212)" data-tip="KPop Demon Hunters — 2026-08-09 — 5.5M hours"/>
+<rect x="725.5" y="171" width="6.2" height="18" fill="rgb(140,176,212)" data-tip="KPop Demon Hunters — 2026-08-16 — 5.5M hours"/>
+<rect x="731.7" y="171" width="6.2" height="18" fill="rgb(144,179,214)" data-tip="KPop Demon Hunters — 2026-08-23 — 5.2M hours"/>
+<rect x="737.8" y="171" width="6.2" height="18" fill="rgb(148,182,216)" data-tip="KPop Demon Hunters — 2026-08-30 — 4.8M hours"/>
+<text x="209" y="202.5" text-anchor="end" font-size="10">Mahavatar Narsimha</text>
+<rect x="215.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="190" width="6.2" height="18" fill="rgb(146,180,215)" data-tip="Mahavatar Narsimha — 2025-09-21 — 5.0M hours"/>
+<rect x="442.6" y="190" width="6.2" height="18" fill="rgb(129,168,208)" data-tip="Mahavatar Narsimha — 2025-09-28 — 6.6M hours"/>
+<rect x="448.7" y="190" width="6.2" height="18" fill="rgb(178,204,228)" data-tip="Mahavatar Narsimha — 2025-10-05 — 2.9M hours"/>
+<rect x="454.9" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="190" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="221.5" text-anchor="end" font-size="10">The Twits</text>
+<rect x="215.0" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="209" width="6.2" height="18" fill="rgb(103,150,197)" data-tip="The Twits — 2025-10-19 — 10.2M hours"/>
+<rect x="467.2" y="209" width="6.2" height="18" fill="rgb(85,136,189)" data-tip="The Twits — 2025-10-26 — 13.9M hours"/>
+<rect x="473.3" y="209" width="6.2" height="18" fill="rgb(138,175,211)" data-tip="The Twits — 2025-11-02 — 5.7M hours"/>
+<rect x="479.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="209" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="240.5" text-anchor="end" font-size="10">Dr. Seuss&#x27;s The Sneetches</text>
+<rect x="215.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="228" width="6.2" height="18" fill="rgb(174,201,227)" data-tip="Dr. Seuss&#x27;s The Sneetches — 2025-11-09 — 3.1M hours"/>
+<rect x="485.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="228" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="259.5" text-anchor="end" font-size="10">Cosmic Princess Kaguya!</text>
+<rect x="215.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="247" width="6.2" height="18" fill="rgb(192,214,234)" data-tip="Cosmic Princess Kaguya! — 2026-01-25 — 2.3M hours"/>
+<rect x="553.3" y="247" width="6.2" height="18" fill="rgb(178,204,228)" data-tip="Cosmic Princess Kaguya! — 2026-02-01 — 2.9M hours"/>
+<rect x="559.5" y="247" width="6.2" height="18" fill="rgb(204,222,239)" data-tip="Cosmic Princess Kaguya! — 2026-02-08 — 1.9M hours"/>
+<rect x="565.6" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="247" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="278.5" text-anchor="end" font-size="10">The Bad Guys 2</text>
+<rect x="215.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="266" width="6.2" height="18" fill="rgb(122,163,205)" data-tip="The Bad Guys 2 — 2026-03-29 — 7.4M hours"/>
+<rect x="608.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="664.0" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="670.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="266" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="209" y="297.5" text-anchor="end" font-size="10">Emi Martínez: The Kid Who Stops Time</text>
+<rect x="215.0" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="221.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="227.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="233.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="239.6" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="245.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="251.9" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="258.1" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="264.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="270.4" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="276.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="282.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="288.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="295.0" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="301.1" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="307.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="313.4" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="319.6" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="325.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="331.9" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="338.0" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="344.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="350.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="356.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="362.6" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="368.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="374.9" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="381.1" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="387.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="393.4" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="399.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="405.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="411.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="418.0" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="424.1" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="430.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="436.4" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="442.6" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="448.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="454.9" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="461.0" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="467.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="473.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="479.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="485.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="491.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="498.0" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="504.1" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="510.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="516.4" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="522.6" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="528.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="534.9" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="541.0" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="547.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="553.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="559.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="565.6" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="571.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="577.9" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="584.1" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="590.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="596.4" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="602.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="608.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="614.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="621.0" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="627.1" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="633.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="639.4" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="645.6" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="651.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="657.9" y="285" width="6.2" height="18" fill="rgb(190,212,233)" data-tip="Emi Martínez: The Kid Who Stops Time — 2026-05-31 — 2.4M hours"/>
+<rect x="664.0" y="285" width="6.2" height="18" fill="rgb(222,235,247)" data-tip="Emi Martínez: The Kid Who Stops Time — 2026-06-07 — 1.4M hours"/>
+<rect x="670.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="676.3" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="682.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="688.6" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="694.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="700.9" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="707.1" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="713.2" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="719.4" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="725.5" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="731.7" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<rect x="737.8" y="285" width="6.2" height="18" fill="#f0f0f0"/>
+<text x="215" y="321" font-size="9" fill="#555">log scale: 1.4M</text>
+<rect x="325.0" y="311" width="5.5" height="9" fill="rgb(222,235,247)"/>
+<rect x="330.0" y="311" width="5.5" height="9" fill="rgb(217,231,245)"/>
+<rect x="335.0" y="311" width="5.5" height="9" fill="rgb(211,227,242)"/>
+<rect x="340.0" y="311" width="5.5" height="9" fill="rgb(206,223,240)"/>
+<rect x="345.0" y="311" width="5.5" height="9" fill="rgb(200,219,238)"/>
+<rect x="350.0" y="311" width="5.5" height="9" fill="rgb(195,215,235)"/>
+<rect x="355.0" y="311" width="5.5" height="9" fill="rgb(189,211,233)"/>
+<rect x="360.0" y="311" width="5.5" height="9" fill="rgb(184,207,231)"/>
+<rect x="365.0" y="311" width="5.5" height="9" fill="rgb(178,203,228)"/>
+<rect x="370.0" y="311" width="5.5" height="9" fill="rgb(173,199,226)"/>
+<rect x="375.0" y="311" width="5.5" height="9" fill="rgb(167,196,224)"/>
+<rect x="380.0" y="311" width="5.5" height="9" fill="rgb(162,192,221)"/>
+<rect x="385.0" y="311" width="5.5" height="9" fill="rgb(156,188,219)"/>
+<rect x="390.0" y="311" width="5.5" height="9" fill="rgb(151,184,217)"/>
+<rect x="395.0" y="311" width="5.5" height="9" fill="rgb(145,180,214)"/>
+<rect x="400.0" y="311" width="5.5" height="9" fill="rgb(140,176,212)"/>
+<rect x="405.0" y="311" width="5.5" height="9" fill="rgb(134,172,210)"/>
+<rect x="410.0" y="311" width="5.5" height="9" fill="rgb(129,168,207)"/>
+<rect x="415.0" y="311" width="5.5" height="9" fill="rgb(123,164,205)"/>
+<rect x="420.0" y="311" width="5.5" height="9" fill="rgb(118,160,203)"/>
+<rect x="425.0" y="311" width="5.5" height="9" fill="rgb(112,156,200)"/>
+<rect x="430.0" y="311" width="5.5" height="9" fill="rgb(107,152,198)"/>
+<rect x="435.0" y="311" width="5.5" height="9" fill="rgb(101,148,196)"/>
+<rect x="440.0" y="311" width="5.5" height="9" fill="rgb(96,144,193)"/>
+<rect x="445.0" y="311" width="5.5" height="9" fill="rgb(90,140,191)"/>
+<rect x="450.0" y="311" width="5.5" height="9" fill="rgb(85,136,189)"/>
+<rect x="455.0" y="311" width="5.5" height="9" fill="rgb(79,132,186)"/>
+<rect x="460.0" y="311" width="5.5" height="9" fill="rgb(74,128,184)"/>
+<rect x="465.0" y="311" width="5.5" height="9" fill="rgb(68,124,182)"/>
+<rect x="470.0" y="311" width="5.5" height="9" fill="rgb(63,120,179)"/>
+<rect x="475.0" y="311" width="5.5" height="9" fill="rgb(57,117,177)"/>
+<rect x="480.0" y="311" width="5.5" height="9" fill="rgb(52,113,175)"/>
+<rect x="485.0" y="311" width="5.5" height="9" fill="rgb(46,109,172)"/>
+<rect x="490.0" y="311" width="5.5" height="9" fill="rgb(41,105,170)"/>
+<rect x="495.0" y="311" width="5.5" height="9" fill="rgb(35,101,168)"/>
+<rect x="500.0" y="311" width="5.5" height="9" fill="rgb(30,97,165)"/>
+<rect x="505.0" y="311" width="5.5" height="9" fill="rgb(24,93,163)"/>
+<rect x="510.0" y="311" width="5.5" height="9" fill="rgb(19,89,161)"/>
+<rect x="515.0" y="311" width="5.5" height="9" fill="rgb(13,85,158)"/>
+<rect x="520.0" y="311" width="5.5" height="9" fill="rgb(8,81,156)"/>
+<text x="531" y="321" font-size="9" fill="#555">50.2M</text>
+</svg>
+<h2>Scenario totals</h2>
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Slate total hours by scenario">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Slate total hours by scenario</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">0.0M</text>
+<line x1="60" y1="207.0" x2="744" y2="207.0" stroke="#e0e0e0"/>
+<text x="54" y="211.0" text-anchor="end" font-size="10" fill="#555">417.4M</text>
+<line x1="60" y1="146.0" x2="744" y2="146.0" stroke="#e0e0e0"/>
+<text x="54" y="150.0" text-anchor="end" font-size="10" fill="#555">834.9M</text>
+<line x1="60" y1="85.0" x2="744" y2="85.0" stroke="#e0e0e0"/>
+<text x="54" y="89.0" text-anchor="end" font-size="10" fill="#555">1,252.3M</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">1,669.8M</text>
+<text x="14" y="146" font-size="10" fill="#555" transform="rotate(-90 14 146)" text-anchor="middle">total hours</text>
+<text x="60.0" y="282" text-anchor="middle" font-size="10" fill="#555">baseline</text>
+<text x="288.0" y="282" text-anchor="middle" font-size="10" fill="#555">tentpole_slips_4w</text>
+<text x="516.0" y="282" text-anchor="middle" font-size="10" fill="#555">tentpoles_collide</text>
+<text x="744.0" y="282" text-anchor="middle" font-size="10" fill="#555">budget_shift_to_tentpole</text>
+<rect x="94.2" y="72.3" width="102.6" height="195.7" fill="#1f77b4"/>
+<text x="145.5" y="67.3" text-anchor="middle" font-size="11">1,339.3M</text>
+<text x="145.5" y="282" text-anchor="middle" font-size="10" fill="#555">baseline</text>
+<rect x="265.2" y="72.3" width="102.6" height="195.7" fill="#d62728"/>
+<text x="316.5" y="67.3" text-anchor="middle" font-size="11">1,339.3M</text>
+<text x="316.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpole_slips_4w</text>
+<rect x="436.2" y="72.4" width="102.6" height="195.6" fill="#2ca02c"/>
+<text x="487.5" y="67.4" text-anchor="middle" font-size="11">1,338.2M</text>
+<text x="487.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpoles_collide</text>
+<rect x="607.2" y="55.8" width="102.6" height="212.2" fill="#9467bd"/>
+<text x="658.5" y="50.8" text-anchor="middle" font-size="11">1,452.0M</text>
+<text x="658.5" y="282" text-anchor="middle" font-size="10" fill="#555">budget_shift_to_tentpole</text>
+</svg>
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Peak-week load by scenario">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Peak-week load by scenario</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">0.0M</text>
+<line x1="60" y1="207.0" x2="744" y2="207.0" stroke="#e0e0e0"/>
+<text x="54" y="211.0" text-anchor="end" font-size="10" fill="#555">16.3M</text>
+<line x1="60" y1="146.0" x2="744" y2="146.0" stroke="#e0e0e0"/>
+<text x="54" y="150.0" text-anchor="end" font-size="10" fill="#555">32.7M</text>
+<line x1="60" y1="85.0" x2="744" y2="85.0" stroke="#e0e0e0"/>
+<text x="54" y="89.0" text-anchor="end" font-size="10" fill="#555">49.0M</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">65.3M</text>
+<text x="14" y="146" font-size="10" fill="#555" transform="rotate(-90 14 146)" text-anchor="middle">hours in peak week</text>
+<text x="60.0" y="282" text-anchor="middle" font-size="10" fill="#555">baseline</text>
+<text x="288.0" y="282" text-anchor="middle" font-size="10" fill="#555">tentpole_slips_4w</text>
+<text x="516.0" y="282" text-anchor="middle" font-size="10" fill="#555">tentpoles_collide</text>
+<text x="744.0" y="282" text-anchor="middle" font-size="10" fill="#555">budget_shift_to_tentpole</text>
+<rect x="94.2" y="80.5" width="102.6" height="187.5" fill="#1f77b4"/>
+<text x="145.5" y="75.5" text-anchor="middle" font-size="11">50.2M</text>
+<text x="145.5" y="282" text-anchor="middle" font-size="10" fill="#555">baseline</text>
+<rect x="265.2" y="55.8" width="102.6" height="212.2" fill="#d62728"/>
+<text x="316.5" y="50.8" text-anchor="middle" font-size="11">56.8M</text>
+<text x="316.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpole_slips_4w</text>
+<rect x="436.2" y="80.5" width="102.6" height="187.5" fill="#2ca02c"/>
+<text x="487.5" y="75.5" text-anchor="middle" font-size="11">50.2M</text>
+<text x="487.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpoles_collide</text>
+<rect x="607.2" y="61.7" width="102.6" height="206.3" fill="#9467bd"/>
+<text x="658.5" y="56.7" text-anchor="middle" font-size="11">55.2M</text>
+<text x="658.5" y="282" text-anchor="middle" font-size="10" fill="#555">budget_shift_to_tentpole</text>
+</svg>
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bridge: how each scenario moves slate total hours vs baseline (floating bars are alternatives, not cumulative steps)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Bridge: how each scenario moves slate total hours vs baseline (floating bars are alternatives, not cumulative steps)</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">1.32B</text>
+<line x1="60" y1="207.0" x2="744" y2="207.0" stroke="#e0e0e0"/>
+<text x="54" y="211.0" text-anchor="end" font-size="10" fill="#555">1.36B</text>
+<line x1="60" y1="146.0" x2="744" y2="146.0" stroke="#e0e0e0"/>
+<text x="54" y="150.0" text-anchor="end" font-size="10" fill="#555">1.40B</text>
+<line x1="60" y1="85.0" x2="744" y2="85.0" stroke="#e0e0e0"/>
+<text x="54" y="89.0" text-anchor="end" font-size="10" fill="#555">1.43B</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">1.47B</text>
+<rect x="98.5" y="242.6" width="94.1" height="25.4" fill="#1f77b4"/>
+<text x="145.5" y="237.6" text-anchor="middle" font-size="11">1.34B</text>
+<text x="145.5" y="282" text-anchor="middle" font-size="10" fill="#555">Baseline</text>
+<line x1="269.5" y1="242.6" x2="363.5" y2="242.6" stroke="#999" stroke-width="3"/>
+<text x="316.5" y="237.6" text-anchor="middle" font-size="11">+0.0M</text>
+<text x="316.5" y="296" text-anchor="middle" font-size="9" fill="#555">total 1.34B</text>
+<text x="316.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpole slips 4w</text>
+<rect x="440.5" y="242.6" width="94.1" height="1.8" fill="#d62728"/>
+<text x="487.5" y="258.4" text-anchor="middle" font-size="11">-1.1M</text>
+<text x="487.5" y="296" text-anchor="middle" font-size="9" fill="#555">total 1.34B</text>
+<text x="487.5" y="282" text-anchor="middle" font-size="10" fill="#555">tentpoles collide</text>
+<rect x="611.5" y="47.6" width="94.1" height="195.0" fill="#2ca02c"/>
+<text x="658.5" y="42.6" text-anchor="middle" font-size="11">+112.7M</text>
+<text x="658.5" y="296" text-anchor="middle" font-size="9" fill="#555">total 1.45B</text>
+<text x="658.5" y="282" text-anchor="middle" font-size="10" fill="#555">budget shift to tentpole</text>
+</svg>
+<table border='1' cellpadding='5' cellspacing='0'><tr><th>scenario</th><th>total_hours</th><th>peak_week</th><th>peak_week_hours</th><th>what_changed</th></tr><tr><td>baseline</td><td>1.339B (+0.00%)</td><td>2025-08-31</td><td>50.2M (+0.00%)</td><td>As observed: each title releases in its first Top 10 week.</td></tr><tr><td>tentpole_slips_4w</td><td>1.339B (+0.00%)</td><td>2025-09-28</td><td>56.8M (+13.15%)</td><td>Largest-total title (KPop Demon Hunters) delayed 4 weeks. Shape preserved; newly created collisions cost 5% that week.</td></tr><tr><td>tentpoles_collide</td><td>1.338B (-0.08%)</td><td>2025-08-31</td><td>50.2M (+0.00%)</td><td>Plankton: The Movie moved to release the same week as Despicable Me 4 (2025-03-02); its overlapping weeks take the 5% collision penalty.</td></tr><tr><td>budget_shift_to_tentpole</td><td>1.452B (+8.41%)</td><td>2025-08-31</td><td>55.2M (+10.00%)</td><td>10% marketing weight from smallest-peak title (My Hero Academia: You&#x27;re Next) to largest-peak title (KPop Demon Hunters); whole runs scale, shape kept.</td></tr></table>
+<h2>First-run shapes</h2>
+<svg viewBox="0 0 760 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="First-run shape: weekly hours as fraction of peak (grey: each title&#x27;s own curve; blue: median)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">First-run shape: weekly hours as fraction of peak (grey: each title&#x27;s own curve; blue: median)</text>
+<line x1="60" y1="268.0" x2="744" y2="268.0" stroke="#e0e0e0"/>
+<text x="54" y="272.0" text-anchor="end" font-size="10" fill="#555">0.0</text>
+<line x1="60" y1="207.0" x2="744" y2="207.0" stroke="#e0e0e0"/>
+<text x="54" y="211.0" text-anchor="end" font-size="10" fill="#555">0.3</text>
+<line x1="60" y1="146.0" x2="744" y2="146.0" stroke="#e0e0e0"/>
+<text x="54" y="150.0" text-anchor="end" font-size="10" fill="#555">0.5</text>
+<line x1="60" y1="85.0" x2="744" y2="85.0" stroke="#e0e0e0"/>
+<text x="54" y="89.0" text-anchor="end" font-size="10" fill="#555">0.8</text>
+<line x1="60" y1="24.0" x2="744" y2="24.0" stroke="#e0e0e0"/>
+<text x="54" y="28.0" text-anchor="end" font-size="10" fill="#555">1.1</text>
+<text x="14" y="146" font-size="10" fill="#555" transform="rotate(-90 14 146)" text-anchor="middle">fraction of peak</text>
+<text x="60.0" y="282" text-anchor="middle" font-size="10" fill="#555">wk 0</text>
+<text x="288.0" y="282" text-anchor="middle" font-size="10" fill="#555">wk 1</text>
+<text x="516.0" y="282" text-anchor="middle" font-size="10" fill="#555">wk 2</text>
+<text x="744.0" y="282" text-anchor="middle" font-size="10" fill="#555">wk 3</text>
+<polyline points="60.0,174.2 288.0,42.1 516.0,124.5 744.0,165.4" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,87.5 288.0,42.1 516.0,143.5 744.0,196.8" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,174.7 288.0,42.1 516.0,163.8 744.0,211.1" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,95.2 288.0,42.1 516.0,87.0 744.0,126.8" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,42.1 288.0,62.0 516.0,86.6 744.0,114.4" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,42.1 288.0,117.8 516.0,172.4 744.0,200.9" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,71.9 288.0,42.1 516.0,133.1 744.0,158.7" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,106.9 288.0,42.1 516.0,155.0 744.0,205.4" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,198.6 288.0,86.6 516.0,97.9 744.0,86.1" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,42.1 288.0,133.8 516.0,175.1 744.0,194.8" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,46.4 288.0,42.1 516.0,163.6 744.0,205.2" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,125.0 288.0,42.1 516.0,144.9 744.0,192.3" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,160.0 288.0,42.1 516.0,110.8 744.0,152.1" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,90.2 288.0,42.1 516.0,144.2 744.0,201.6" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,42.1 288.0,57.2 516.0,181.9 744.0,216.3" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,98.6 288.0,42.1 516.0,96.7 744.0,129.7" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,42.1 288.0,43.9 516.0,113.7 744.0,154.1" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,42.1 288.0,56.1 516.0,130.2 744.0,120.9" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,42.1 288.0,71.9 516.0,130.2 744.0,156.2" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,214.7 288.0,42.1 516.0,115.5 744.0,141.0" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,42.1 288.0,90.6 516.0,139.2 744.0,176.5" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,126.6 288.0,42.1 516.0,157.5 744.0,200.2" fill="none" stroke="#cccccc" stroke-width="1"/>
+<polyline points="60.0,88.8 288.0,42.1 516.0,136.2 744.0,170.9" fill="none" stroke="#1f77b4" stroke-width="2.5"/>
+<polyline points="60.0,198.6 288.0,86.6 516.0,97.9 744.0,86.1" fill="none" stroke="#d62728" stroke-width="2"/>
+<polyline points="60.0,42.1 288.0,57.2 516.0,181.9 744.0,216.3" fill="none" stroke="#2ca02c" stroke-width="2"/>
+<polyline points="60.0,71.9 288.0,42.1 516.0,133.1 744.0,158.7" fill="none" stroke="#9467bd" stroke-width="2"/>
+<rect x="60" y="306" width="10" height="10" fill="#1f77b4"/>
+<text x="74" y="315" font-size="11">median shape</text>
+<rect x="174.0" y="306" width="10" height="10" fill="#bbbbbb"/>
+<text x="188.0" y="315" font-size="11">individual titles (22)</text>
+<rect x="353.0" y="306" width="10" height="10" fill="#d62728"/>
+<text x="367.0" y="315" font-size="11">KPop</text>
+<rect x="415.0" y="306" width="10" height="10" fill="#2ca02c"/>
+<text x="429.0" y="315" font-size="11">Plankton</text>
+<rect x="503.0" y="306" width="10" height="10" fill="#9467bd"/>
+<text x="517.0" y="315" font-size="11">Despicable Me 4</text>
+</svg>
+<h2>Slate composition</h2>
+<svg viewBox="0 0 760 340" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Slate composition — share of total hours by title (area = share)">
+<text x="380" y="16" text-anchor="middle" font-size="13" font-weight="bold">Slate composition — share of total hours by title (area = share)</text>
+<rect x="8.0" y="30.0" width="744.0" height="254.5" fill="#1f77b4" stroke="#ffffff" stroke-width="1" data-tip="KPop Demon Hunters — 84.3% of slate (1,128.8M hours)"/>
+<text x="14.0" y="46.0" font-size="10" font-weight="bold" fill="#ffffff">KPop</text>
+<text x="14.0" y="60.0" font-size="10" fill="#ffffff">84.3%</text>
+<rect x="8.0" y="284.5" width="377.1" height="23.8" fill="#aec7e8" stroke="#ffffff" stroke-width="1" data-tip="Plankton: The Movie — 4.0% of slate (53.4M hours)"/>
+<text x="14.0" y="299.4" font-size="9" fill="#222222">Plankton 4.0%</text>
+<rect x="8.0" y="308.3" width="377.1" height="23.7" fill="#ff7f0e" stroke="#ffffff" stroke-width="1" data-tip="Despicable Me 4 — 4.0% of slate (53.3M hours)"/>
+<text x="14.0" y="323.1" font-size="9" fill="#222222">Despicable Me 4 4.0%</text>
+<rect x="385.1" y="284.5" width="220.4" height="22.7" fill="#ffbb78" stroke="#ffffff" stroke-width="1" data-tip="The Twits — 2.2% of slate (29.8M hours)"/>
+<text x="391.1" y="298.9" font-size="9" fill="#222222">The Twits 2.2%</text>
+<rect x="605.5" y="284.5" width="146.5" height="22.7" fill="#2ca02c" stroke="#ffffff" stroke-width="1" data-tip="The Wild Robot — 1.5% of slate (19.8M hours)"/>
+<text x="611.5" y="298.9" font-size="9" fill="#ffffff">Wild Robot 1.5%</text>
+<rect x="385.1" y="307.2" width="197.7" height="12.3" fill="#98df8a" stroke="#ffffff" stroke-width="1" data-tip="Mahavatar Narsimha — 1.1% of slate (14.5M hours)"/>
+<rect x="385.1" y="319.5" width="99.5" height="12.5" fill="#d62728" stroke="#ffffff" stroke-width="1" data-tip="The Bad Guys 2 — 0.6% of slate (7.4M hours)"/>
+<rect x="484.6" y="319.5" width="98.2" height="12.5" fill="#ff9896" stroke="#ffffff" stroke-width="1" data-tip="The Witcher: Sirens of the Deep — 0.5% of slate (7.3M hours)"/>
+<rect x="582.8" y="307.2" width="89.7" height="13.3" fill="#9467bd" stroke="#ffffff" stroke-width="1" data-tip="Cosmic Princess Kaguya! — 0.5% of slate (7.1M hours)"/>
+<rect x="672.4" y="307.2" width="79.6" height="13.3" fill="#c5b0d5" stroke="#ffffff" stroke-width="1" data-tip="Wallace &amp; Gromit: Vengeance Most Fowl — 0.5% of slate (6.3M hours)"/>
+<rect x="582.8" y="320.5" width="100.7" height="6.3" fill="#8c564b" stroke="#ffffff" stroke-width="1" data-tip="Emi Martínez: The Kid Who Stops Time — 0.3% of slate (3.8M hours)"/>
+<rect x="582.8" y="326.8" width="100.7" height="5.2" fill="#c49c94" stroke="#ffffff" stroke-width="1" data-tip="Dr. Seuss&#x27;s The Sneetches — 0.2% of slate (3.1M hours)"/>
+<rect x="683.4" y="320.5" width="68.6" height="6.1" fill="#e377c2" stroke="#ffffff" stroke-width="1" data-tip="The Rose of Versailles — 0.2% of slate (2.5M hours)"/>
+<rect x="683.4" y="326.6" width="68.6" height="5.4" fill="#f7b6d2" stroke="#ffffff" stroke-width="1" data-tip="My Hero Academia: You&#x27;re Next — 0.2% of slate (2.2M hours)"/>
+</svg>
+<h2>Scorecard — first 4 weeks vs shape-model forecast</h2>
+<p>Thresholds: &gt;1.20 ahead of plan; 0.80–1.20 on track; 0.60–0.80 at risk; &lt;0.60 below plan; 1-week runs are insufficient data.</p>
+<table border='1' cellpadding='5' cellspacing='0'><tr><th>title</th><th>release_week</th><th>run_weeks</th><th>peak_hours</th><th>actual_first4w_hours</th><th>forecast_first4w_hours</th><th>actual_vs_forecast</th><th>status</th></tr><tr><td>Wallace &amp; Gromit: Vengeance Most Fowl</td><td>2025-01-12</td><td>1</td><td>6.3M</td><td>6.3M</td><td>6.3M</td><td>n/a</td><td>insufficient data</td></tr><tr><td>The Witcher: Sirens of the Deep</td><td>2025-02-16</td><td>1</td><td>7.3M</td><td>7.3M</td><td>7.3M</td><td>n/a</td><td>insufficient data</td></tr><tr><td>Despicable Me 4</td><td>2025-03-02</td><td>5</td><td>15.9M</td><td>46.9M</td><td>44.6M</td><td>1.05</td><td>on track</td></tr><tr><td>Plankton: The Movie</td><td>2025-03-09</td><td>4</td><td>21.0M</td><td>53.4M</td><td>58.9M</td><td>0.91</td><td>on track</td></tr><tr><td>My Hero Academia: You&#x27;re Next</td><td>2025-04-27</td><td>1</td><td>2.2M</td><td>2.2M</td><td>2.2M</td><td>n/a</td><td>insufficient data</td></tr><tr><td>The Rose of Versailles</td><td>2025-05-04</td><td>1</td><td>2.5M</td><td>2.5M</td><td>2.5M</td><td>n/a</td><td>insufficient data</td></tr><tr><td>The Wild Robot</td><td>2025-05-25</td><td>3</td><td>9.9M</td><td>19.8M</td><td>23.5M</td><td>0.84</td><td>on track</td></tr><tr><td>KPop Demon Hunters</td><td>2025-06-22</td><td>63</td><td>50.2M</td><td>133.9M</td><td>140.9M</td><td>0.95</td><td>on track</td></tr><tr><td>Mahavatar Narsimha</td><td>2025-09-21</td><td>3</td><td>6.6M</td><td>14.5M</td><td>15.7M</td><td>0.92</td><td>on track</td></tr><tr><td>The Twits</td><td>2025-10-19</td><td>3</td><td>13.9M</td><td>29.8M</td><td>33.0M</td><td>0.90</td><td>on track</td></tr><tr><td>Dr. Seuss&#x27;s The Sneetches</td><td>2025-11-09</td><td>1</td><td>3.1M</td><td>3.1M</td><td>3.1M</td><td>n/a</td><td>insufficient data</td></tr><tr><td>Cosmic Princess Kaguya!</td><td>2026-01-25</td><td>3</td><td>2.9M</td><td>7.1M</td><td>6.9M</td><td>1.03</td><td>on track</td></tr><tr><td>The Bad Guys 2</td><td>2026-03-29</td><td>1</td><td>7.4M</td><td>7.4M</td><td>7.4M</td><td>n/a</td><td>insufficient data</td></tr><tr><td>Emi Martínez: The Kid Who Stops Time</td><td>2026-05-31</td><td>2</td><td>2.4M</td><td>3.8M</td><td>4.3M</td><td>0.88</td><td>on track</td></tr></table>
+<p><i>Limitations: Top 10 data covers only titles that reached the Top 10;
+hours viewed are Netflix-reported weekly aggregates. The collision penalty
+(5%) and the budget-shift effect (+/-10% of a run) are stated assumptions,
+not measured causal effects. Forecasts are illustrative, not production
+predictions.</i></p>
+
+<script>
+document.addEventListener('mouseover', function (e) {
+  var t = e.target.closest ? e.target.closest('[data-tip]') : null;
+  var tip = document.getElementById('tooltip');
+  if (!t) { tip.style.display = 'none'; return; }
+  tip.textContent = t.getAttribute('data-tip');
+  tip.style.display = 'block';
+  tip.style.left = (e.clientX + 12) + 'px';
+  tip.style.top = (e.clientY + 12) + 'px';
+});
+document.addEventListener('mouseout', function (e) {
+  var t = e.target.closest ? e.target.closest('[data-tip]') : null;
+  if (t) { document.getElementById('tooltip').style.display = 'none'; }
+});
+document.addEventListener('click', function (e) {
+  var l = e.target.closest ? e.target.closest('[data-toggle]') : null;
+  if (!l) return;
+  var el = document.getElementById(l.getAttribute('data-toggle'));
+  if (!el) return;
+  var hidden = el.style.display === 'none';
+  el.style.display = hidden ? '' : 'none';
+  l.style.opacity = hidden ? '1' : '0.35';
+});
+</script>
+</body></html>

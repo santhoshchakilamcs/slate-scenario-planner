@@ -1,0 +1,16 @@
+{
+  "netflix_source": "https://www.netflix.com/tudum/top10/data/all-weeks-global.tsv",
+  "netflix_sha256": "e63b35e4a5646d9f78c70706011c1f9d176420cfc0fde693d7450e0442b9b389",
+  "netflix_rows": 11280,
+  "netflix_weeks": "2021-07-04 to 2026-11-22",
+  "netflix_unique_titles": 3591,
+  "imdb_sources": [
+    "https://datasets.imdbws.com/title.basics.tsv.gz",
+    "https://datasets.imdbws.com/title.ratings.tsv.gz"
+  ],
+  "imdb_matched_titles": 3388,
+  "imdb_match_rate_pct": 94.3,
+  "animated_movies_matched": 121,
+  "animated_film_first_run_rows": 330,
+  "download_date": "2026-11-26"
+}
