@@ -206,13 +206,13 @@ src/pipeline.py         load, clean, join, runs, slate rules
 src/forecast.py         decay / naive / shape models, one-step evaluation
 src/scenarios.py        delay, collision penalty, budget shift, comparisons
 src/scorecard.py        status / risk flags
-src/report.py           static HTML report, 10 inline SVG charts (no PNG),
-                        vanilla-JS tooltips + legend toggles, self-contained
+src/report.py           static HTML report, 9 inline SVG charts (no PNG),
+                        vanilla-JS tooltips, self-contained
 data/processed/         committed extracts (imdb_metadata.csv,
                         animated_films_weekly.csv, provenance.json)
 results/results.json    all computed numbers
-results/report.html     10 charts + scorecard + scenario tables
-tests/                  pytest suite (23 tests)
+results/report.html     9 charts + scorecard + scenario tables
+tests/                  pytest suite (32 tests)
 ```
 
 ## Run it
@@ -231,6 +231,6 @@ no download needed.
 
 ## Push
 
-The GitHub repo `slate-scenario-planner` does not exist yet. Once it is
-created (empty), push this directory with the snapshot procedure used
-for the other gap projects (text only, no PNG, no `data/raw/`).
+Live at https://github.com/santhoshchakilamcs/slate-scenario-planner —
+pushed with the snapshot procedure used for the other gap projects
+(text only, no PNG, no `data/raw/`).
